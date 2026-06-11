@@ -17,10 +17,10 @@ function shimUA() {
 const WEBKIT = "AppleWebKit/537.36 (KHTML, like Gecko)";
 const SAFARI = " Safari/537.36";
 
-const PREFIX_WIN = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Gecko/20100101 ComperBrowserProLite/2.0 Chrome/127.0";
-const PREFIX_LIN = "Mozilla/5.0 (X11; Ubuntu; Linux x86_64) Gecko/20100101 ComperBrowserProLite/2.0 Chrome/127.0";
-const PREFIX_MAC = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) Gecko/20100101 ComperBrowserProLite/2.0 Chrome/127.0";
-const PREFIX_AND = "Mozilla/5.0 (Linux; Android 6.0; Nexus 7 Build/JSS15Q) Gecko/20100101 ComperBrowserProLite/2.0 Chrome/127.0";
+const PREFIX_WIN = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Gecko/20100101 Firefox/120.0.0 Chrome/127.0";
+const PREFIX_LIN = "Mozilla/5.0 (X11; Ubuntu; Linux x86_64) Gecko/20100101 Firefox/120.0.0 Chrome/127.0";
+const PREFIX_MAC = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) Gecko/20100101 Firefox/120.0.0 Chrome/127.0";
+const PREFIX_AND = "Mozilla/5.0 (Linux; Android 6.0; Nexus 7 Build/JSS15Q) Gecko/20100101 Firefox/120.0.0 Chrome/127.0";
 
 const PHONE = "Nexus 5 Build/MRA58N";
 const TABLET = "Nexus 7 Build/JSS15Q";
@@ -157,65 +157,65 @@ const DEVICE_APPROPRIATE_TESTS = [
   {
     ua: "Windows",
     config: { OS: "android", phone: "PHONE", noFxQuantum: true },
-    expected: `Mozilla/5.0 (Linux; Android 6.0; PHONE) ${WEBKIT} Chrome/127.0 Mobile${SAFARI} Gecko/20100101 ComperBrowserProLite/2.0`,
+    expected: `Mozilla/5.0 (Linux; Android 6.0; PHONE) ${WEBKIT} Chrome/127.0 Mobile${SAFARI} Gecko/20100101 Firefox/120.0.0`,
   },
   {
     ua: "Windows",
     config: { OS: "android", tablet: "TABLET", noFxQuantum: true },
-    expected: `Mozilla/5.0 (Linux; Android 6.0; TABLET) ${WEBKIT} Chrome/127.0${SAFARI} Gecko/20100101 ComperBrowserProLite/2.0`,
+    expected: `Mozilla/5.0 (Linux; Android 6.0; TABLET) ${WEBKIT} Chrome/127.0${SAFARI} Gecko/20100101 Firefox/120.0.0`,
   },
 
   // test an android phone spoofing a tablet and vice versa
   {
     ua: "Android 8.8.8 Mobile",
     config: { noFxQuantum: true, tablet: "TABLET" },
-    expected: `Mozilla/5.0 (Linux; Android 8.8.8; TABLET) ${WEBKIT} Chrome/127.0${SAFARI} Gecko/20100101 ComperBrowserProLite/2.0`,
+    expected: `Mozilla/5.0 (Linux; Android 8.8.8; TABLET) ${WEBKIT} Chrome/127.0${SAFARI} Gecko/20100101 Firefox/120.0.0`,
   },
   {
     ua: "Android 8.8.8 Mobile",
     config: { noFxQuantum: true, tablet: true },
-    expected: `Mozilla/5.0 (Linux; Android 8.8.8; ${TABLET}) ${WEBKIT} Chrome/127.0${SAFARI} Gecko/20100101 ComperBrowserProLite/2.0`,
+    expected: `Mozilla/5.0 (Linux; Android 8.8.8; ${TABLET}) ${WEBKIT} Chrome/127.0${SAFARI} Gecko/20100101 Firefox/120.0.0`,
   },
   {
     ua: "Android 8.8.8",
     config: { noFxQuantum: true, phone: "PHONE" },
-    expected: `Mozilla/5.0 (Linux; Android 8.8.8; PHONE) ${WEBKIT} Chrome/127.0 Mobile${SAFARI} Gecko/20100101 ComperBrowserProLite/2.0`,
+    expected: `Mozilla/5.0 (Linux; Android 8.8.8; PHONE) ${WEBKIT} Chrome/127.0 Mobile${SAFARI} Gecko/20100101 Firefox/120.0.0`,
   },
   {
     ua: "Android 8.8.8",
     config: { noFxQuantum: true, phone: true },
-    expected: `Mozilla/5.0 (Linux; Android 8.8.8; ${PHONE}) ${WEBKIT} Chrome/127.0 Mobile${SAFARI} Gecko/20100101 ComperBrowserProLite/2.0`,
+    expected: `Mozilla/5.0 (Linux; Android 8.8.8; ${PHONE}) ${WEBKIT} Chrome/127.0 Mobile${SAFARI} Gecko/20100101 Firefox/120.0.0`,
   },
 
   // test that accidentally spoofing both phone and tablet just picks a phone
   {
     ua: "Android 8.8.8",
     config: { noFxQuantum: true, phone: true, tablet: true },
-    expected: `Mozilla/5.0 (Linux; Android 8.8.8; ${PHONE}) ${WEBKIT} Chrome/127.0 Mobile${SAFARI} Gecko/20100101 ComperBrowserProLite/2.0`,
+    expected: `Mozilla/5.0 (Linux; Android 8.8.8; ${PHONE}) ${WEBKIT} Chrome/127.0 Mobile${SAFARI} Gecko/20100101 Firefox/120.0.0`,
   },
 
   // test android version number option
   {
     ua: "Android 5.0 Mobile",
     config: { OS: "android", androidVersion: "VER", noFxQuantum: true },
-    expected: `Mozilla/5.0 (Linux; Android VER; ${PHONE}) ${WEBKIT} Chrome/127.0 Mobile${SAFARI} Gecko/20100101 ComperBrowserProLite/2.0`,
+    expected: `Mozilla/5.0 (Linux; Android VER; ${PHONE}) ${WEBKIT} Chrome/127.0 Mobile${SAFARI} Gecko/20100101 Firefox/120.0.0`,
   },
   {
     ua: "Android 5.0",
     config: { OS: "android", androidVersion: "VER", noFxQuantum: true },
-    expected: `Mozilla/5.0 (Linux; Android VER; ${TABLET}) ${WEBKIT} Chrome/127.0${SAFARI} Gecko/20100101 ComperBrowserProLite/2.0`,
+    expected: `Mozilla/5.0 (Linux; Android VER; ${TABLET}) ${WEBKIT} Chrome/127.0${SAFARI} Gecko/20100101 Firefox/120.0.0`,
   },
 
   // test android version numbers are detected if not given
   {
     ua: "Android 8.8.8",
     config: { OS: "android", phone: "DEV", noFxQuantum: true },
-    expected: `Mozilla/5.0 (Linux; Android 8.8.8; DEV) ${WEBKIT} Chrome/127.0.0.0 Mobile${SAFARI} Gecko/20100101 ComperBrowserProLite/2.0`,
+    expected: `Mozilla/5.0 (Linux; Android 8.8.8; DEV) ${WEBKIT} Chrome/127.0.0.0 Mobile${SAFARI} Gecko/20100101 Firefox/120.0.0`,
   },
   {
     ua: "Android 8.8.8 (tablet)",
     config: { OS: "android", noFxQuantum: true },
-    expected: `Mozilla/5.0 (Linux; Android 8.8.8; ${TABLET}) ${WEBKIT} Chrome/127.0.0.0${SAFARI} Gecko/20100101 ComperBrowserProLite/2.0`,
+    expected: `Mozilla/5.0 (Linux; Android 8.8.8; ${TABLET}) ${WEBKIT} Chrome/127.0.0.0${SAFARI} Gecko/20100101 Firefox/120.0.0`,
   },
 ];
 
@@ -361,7 +361,7 @@ const TESTS = {
   getWindowsUA(helper) {
     is(
       helper("X rv:1.1 Z Firefox/1.2 Y"),
-      "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:1.1) Gecko/20100101 ComperBrowserProLite/2.0 Chrome/127.0"
+      "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:1.1) Gecko/20100101 Firefox/120.0.0 Chrome/127.0"
     );
   },
   overrideWithDeviceAppropriateChromeUA(helper) {
@@ -384,11 +384,11 @@ const TESTS = {
     UA = "Firefox/1.0";
     is(
       helper(),
-      "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) Firefox/1.0 AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.1 Safari/605.1.15 Gecko/20100101 ComperBrowserProLite/2.0 Chrome/127.0"
+      "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) Firefox/1.0 AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.1 Safari/605.1.15 Gecko/20100101 Firefox/120.0.0 Chrome/127.0"
     );
     is(
       helper({ osVersion: "1.2", version: "VER", webkitVersion: "WKVER" }),
-      "Mozilla/5.0 (Macintosh; Intel Mac OS X 1_2) Firefox/1.0 AppleWebKit/WKVER (KHTML, like Gecko) Version/VER Safari/WKVER Gecko/20100101 ComperBrowserProLite/2.0 Chrome/127.0"
+      "Mozilla/5.0 (Macintosh; Intel Mac OS X 1_2) Firefox/1.0 AppleWebKit/WKVER (KHTML, like Gecko) Version/VER Safari/WKVER Gecko/20100101 Firefox/120.0.0 Chrome/127.0"
     );
   },
   windows(helper) {
