@@ -1,21 +1,23 @@
 @use 'sass:math';
 
-$primary-blue: var(--color-accent-primary);
-$primary-blue-dark: var(--color-accent-primary);
-$primary-text-color-dark: rgb(43, 42, 51);
+// --- COMPER BROWSER REMASTER ANA VURGU RENKLERİ ---
+$primary-blue: #ff1c1c;         // Eski Firefox mavisi yerine Comper Kırmızısı
+$primary-blue-dark: #ff1c1c;    // Koyu temada da Comper Kırmızısı aktif
+$primary-text-color-dark: rgb(240, 240, 245); // Koyu temada okunabilir açık metin rengi
 
 // -------------------------------------------------------------------------- //
-// Grays from http://design.firefox.com/photon/visuals/color.html
+// Grays - Tonlamaları kırmızı temaya uyumlu hale getirdik
 
-$grey-30: #D7D7DB;
-$grey-60: #4A4A4F;
-$grey-90: #0C0C0D;
+$grey-30: rgba(255, 28, 28, 0.2);  // Çizgiler için çok hafif şeffaf kırmızı tonu
+$grey-60: #2d2d30;                  // Orta ton paneller için koyu gri
+$grey-90: #121214;                  // En koyu alanlar için siyahımsı gri
 
 $grey-90-10: rgba($grey-90, 0.1);
 $grey-90-20: rgba($grey-90, 0.2);
 
-$blue-40-40: oklch(from var(--color-blue-40) / lch 40%);
-$blue-50-30: oklch(from var(--color-blue-50) / lch 30%);
+// Odaklanma haresi ve oklch renk hesaplamalarını Comper Kırmızısına sabitledik
+$blue-40-40: #ff1c1c;
+$blue-50-30: rgba(255, 28, 28, 0.3); 
 
 $black: #000;
 $black-10: rgba($black, 0.1);
@@ -26,38 +28,35 @@ $black-30: rgba($black, 0.3);
 $black-40: rgba($black, 0.4);
 
 // -------------------------------------------------------------------------- //
-// Other colors
+// Diğer İkon ve Arayüz Bileşenleri
 
 $white: var(--color-white);
 $status-green: var(--color-green-50);
 $status-dark-green: var(--color-green-30);
-$bookmark-icon-fill: var(--color-blue-40);
-$download-icon-fill: var(--color-green-40);
-$pocket-icon-fill: #EF4056;
+$bookmark-icon-fill: #ff1c1c;  // Yer imi ikonu rengi Comper Kırmızısı
+$download-icon-fill: #ff1c1c;  // İndirme ikonu rengi Comper Kırmızısı
+$pocket-icon-fill: #ff1c1c;
 $email-input-invalid: var(--color-red-10);
 
-$newtab-wordmark-default-color: #20123A;
-$newtab-wordmark-darktheme-color: rgb(251, 251, 254);
+$newtab-wordmark-default-color: #ff1c1c; // Logo veya yazı rengi Comper Kırmızısı
+$newtab-wordmark-darktheme-color: #ff1c1c;
 
 $in-content-page-color: var(--text-color);
 $in-content-page-color-dark: var(--text-color);
 
 // -------------------------------------------------------------------------- //
-// These colors should match the colors in the default themes
-// (toolkit/mozapps/extensions/...). Note that they could get replaced by other
-// themes. The color set in --tabpanel-background-color (tabs.inc.css) should
-// match these colors here to avoid flashing.
+// Arka Plan Şeffaflıkları (Gelişmiş Japon Teması Uyumu)
 
-$in-content-page-background: #F9F9FB;
-$in-content-page-background-dark: #2B2A33;
-$newtab-background-secondary: var(--color-white);
-$newtab-background-secondary-dark: rgb(66, 65, 77);
+$in-content-page-background: transparent; // Resminin arkasından sırıtmaması için şeffaf yaptık
+$in-content-page-background-dark: transparent;
+$newtab-background-secondary: rgba(20, 20, 20, 0.4); // Açılır menüler için cam efekti (Açık)
+$newtab-background-secondary-dark: rgba(20, 20, 20, 0.7); // Açılır menüler için cam efekti (Koyu)
 
-// Mirrors $newtab-background-secondary with 20% opacity
-$newtab-background-card: color-mix(in srgb, var(--color-white) 80%, transparent);
-$newtab-background-card-dark: rgb(66, 65, 77, 80%);
+// Kart yapıları tamamen şeffaflaştırıldı (Zaten normalize.scss ile gizledik ama koruma amaçlı)
+$newtab-background-card: transparent;
+$newtab-background-card-dark: transparent;
 
-// Photon transitions from http://design.firefox.com/photon/motion/duration-and-easing.html
+// Motion
 $photon-easing: cubic-bezier(0.07, 0.95, 0, 1);
 
 // Grid related styles
@@ -65,48 +64,38 @@ $base-gutter: 32px;
 $section-horizontal-padding: 25px;
 $vars-section-horizontal-padding: 25px;
 $section-vertical-padding: 10px;
-$section-spacing: 40px - $section-vertical-padding * 2; // 20px
-$grid-unit: 96px; // 1 top site
-// New Tab Experience grid unit needs to be smaller, but for now we are changing
-// this UI with a pref, so requires duplication.
-$grid-unit-small: 80px; // 1 top site
+$section-spacing: 40px - $section-vertical-padding * 2;
+$grid-unit: 96px;
+$grid-unit-small: 80px;
 
 $icon-size: 16px;
 $smaller-icon-size: 12px;
 $larger-icon-size: 32px;
 
-$searchbar-width-small: ($grid-unit * 2 + $base-gutter * 1) - 24px; // 200px
-$searchbar-width-medium: ($grid-unit * 4 + $base-gutter * 3) - 120px; // 360px
-$searchbar-width-large: ($grid-unit * 6 + $base-gutter * 5) - 136px; // 600px
-$searchbar-width-largest: ($grid-unit * 6 + $base-gutter * 5) - 16px; // 720px
+// Arama çubuğu genişlikleri (Senin ekranındaki gibi ortada asil durması için ideal boyutlar)
+$searchbar-width-small: 300px;
+$searchbar-width-medium: 450px;
+$searchbar-width-large: 650px;
+$searchbar-width-largest: 750px;
 
-$wrapper-default-width: $grid-unit * 2 + $base-gutter * 1 + $vars-section-horizontal-padding * 2; // 2 top sites
-$wrapper-max-width-medium: $grid-unit * 4 + $base-gutter * 3 + $vars-section-horizontal-padding * 2; // 4 top sites
-$wrapper-max-width-large: $grid-unit * 6 + $base-gutter * 5 + $vars-section-horizontal-padding * 2; // 6 top sites
-$wrapper-max-width-widest: $grid-unit * 8 + $base-gutter * 7 + $vars-section-horizontal-padding * 2; // 8 top sites
-$wrapper-max-width-weather: $grid-unit * 12 + $base-gutter * 7 + $vars-section-horizontal-padding * 2; // Weather visible
-$wrapper-max-width-ultra-wide: $grid-unit * 14 + $base-gutter * 7 + $vars-section-horizontal-padding * 2; // 8 top sites 4 stories
-// For the breakpoints, we need to add space for the scrollbar to avoid weird
-// layout issues when the scrollbar is visible. 16px is wide enough to cover all
-// OSes and keeps it simpler than a per-OS value.
+$wrapper-default-width: $grid-unit * 2 + $base-gutter * 1 + $vars-section-horizontal-padding * 2;
+$wrapper-max-width-medium: $grid-unit * 4 + $base-gutter * 3 + $vars-section-horizontal-padding * 2;
+$wrapper-max-width-large: $grid-unit * 6 + $base-gutter * 5 + $vars-section-horizontal-padding * 2;
+$wrapper-max-width-widest: $grid-unit * 8 + $base-gutter * 7 + $vars-section-horizontal-padding * 2;
+$wrapper-max-width-weather: $grid-unit * 12 + $base-gutter * 7 + $vars-section-horizontal-padding * 2;
+$wrapper-max-width-ultra-wide: $grid-unit * 14 + $base-gutter * 7 + $vars-section-horizontal-padding * 2;
 $scrollbar-width: 16px;
 
 // Breakpoints
-// If updating these breakpoints, don't forget to update uses of DSImage, which
-// might choose the right image src to use depending on the viewport size
-// and the $debug-breakpoints list below
 $break-point-small: 510px;
-$break-point-medium: $wrapper-max-width-medium + $base-gutter * 2 + $scrollbar-width; // 610px
-// A temporary breakpoint for a new layout experiment.
+$break-point-medium: $wrapper-max-width-medium + $base-gutter * 2 + $scrollbar-width;
 $break-point-layout-variant: 724px;
-$break-point-large: $wrapper-max-width-large + $base-gutter * 2 + $scrollbar-width; // 866px
-$break-point-widest: $wrapper-max-width-widest + $base-gutter * 2 + $scrollbar-width; // 1122px
-// temporary breakpoint for sections experiment
-$break-point-sections-variant: 1310px + $base-gutter * 2 + $scrollbar-width; // 1374px
-$break-point-weather: $wrapper-max-width-weather + $base-gutter * 2 + $scrollbar-width; // 1506px
-$break-point-ultra-wide: $wrapper-max-width-ultra-wide + $base-gutter * 2 + $scrollbar-width; // 1698px
+$break-point-large: $wrapper-max-width-large + $base-gutter * 2 + $scrollbar-width;
+$break-point-widest: $wrapper-max-width-widest + $base-gutter * 2 + $scrollbar-width;
+$break-point-sections-variant: 1374px;
+$break-point-weather: $wrapper-max-width-weather + $base-gutter * 2 + $scrollbar-width;
+$break-point-ultra-wide: $wrapper-max-width-ultra-wide + $base-gutter * 2 + $scrollbar-width;
 
-// Used for @include debug-breakpoints in mixins.scss
 $debug-breakpoints: (
   small: $break-point-small,
   medium: $break-point-medium,
@@ -118,30 +107,26 @@ $debug-breakpoints: (
 );
 
 $debug-breakpoint-colors: (
-  small: red,
-  medium: orange,
-  large: yellow,
-  widest: green,
-  sections-variant: blue,
-  weather: purple,
-  ultra-wide: violet
+  small: #ff1c1c,
+  medium: #ff1c1c,
+  large: #ff1c1c,
+  widest: #ff1c1c,
+  sections-variant: #ff1c1c,
+  weather: #ff1c1c,
+  ultra-wide: #ff1c1c
 );
 
 $section-title-font-size: var(--font-size-large);
-
 $card-width: $grid-unit-small * 2 + $base-gutter;
-
 $card-height: 266px;
 $card-preview-image-height: 122px;
 $card-title-margin: 2px;
 $card-text-line-height: 19px;
 
-// Larger cards for wider screens:
 $card-width-large: 309px;
 $card-height-large: 370px;
 $card-preview-image-height-large: 155px;
 
-// Compact cards for Highlights
 $card-height-compact: 160px;
 $card-preview-image-height-compact: 108px;
 
@@ -149,36 +134,33 @@ $topic-margin-block-start: 12px;
 
 $context-menu-button-size: 27px;
 $context-menu-button-boxshadow: 0 2px $grey-90-10;
-$context-menu-shadow: 0 5px 10px $black-30, 0 0 0 1px $black-20;
+$context-menu-shadow: 0 5px 10px rgba(255, 28, 28, 0.2), 0 0 0 1px rgba(255, 28, 28, 0.3);
 $context-menu-font-size: inherit;
 
-// $context-menu-border-radius: 5px;
 $context-menu-outer-padding: 5px;
 $context-menu-item-padding: 3px 12px;
 
 $error-fallback-font-size: var(--font-size-small);
-
 $image-path: 'chrome://newtab/content/data/content/assets/';
-
 $textbox-shadow-size: 4px;
 
 $customize-menu-slide-bezier: cubic-bezier(0.46, 0.03, 0.52, 0.96);
 $customize-menu-expand-bezier: cubic-bezier(0.82, 0.085, 0.395, 0.895);
-$customize-menu-border-tint: 1px solid rgba(0, 0, 0, 15%);
+$customize-menu-border-tint: 1px solid rgba(255, 28, 28, 0.2);
 
 @mixin fade-in {
-  box-shadow: inset $inner-box-shadow, $shadow-primary;
+  box-shadow: 0 0 0 3px rgba(255, 28, 28, 0.4);
   transition: box-shadow 150ms;
 }
 
 @mixin fade-in-card {
-  box-shadow: $shadow-primary;
+  box-shadow: 0 0 0 3px rgba(255, 28, 28, 0.4);
   transition: box-shadow 150ms;
 }
 
 @mixin ds-focus {
   border: 0;
-  outline: var(--focus-outline);
+  outline: 2px solid #ff1c1c; // Odaklanma çerçeveleri net kırmızı
 }
 
 @mixin context-menu-button {
@@ -193,7 +175,7 @@ $customize-menu-border-tint: 1px solid rgba(0, 0, 0, 15%);
     border-radius: var(--border-radius-circle);
     cursor: pointer;
     color: var(--button-text-color);
-    fill: var(--newtab-button-text);
+    fill: #ff1c1c; // Sağ tık noktaları veya detay butonları kırmızı
     height: $context-menu-button-size;
     inset-inline-end: calc(var(--space-medium) * -1);
     opacity: 0;
@@ -210,51 +192,9 @@ $customize-menu-border-tint: 1px solid rgba(0, 0, 0, 15%);
     }
 
     &:is(:hover) {
-      background-color: var(--newtab-button-hover-background);
+      background-color: rgba(255, 28, 28, 0.2);
     }
 
     &:is(:focus-visible) {
-      outline-color: var(--newtab-button-focus-border);
-      background-color: var(--newtab-button-focus-background);
-      outline-width: 4px;
-    }
-
-    &:is(:active) {
-      background-color: var(--newtab-button-active-background);
-    }
-
-
-  }
-}
-
-@mixin context-menu-button-hover {
-  .context-menu-button {
-    opacity: 1;
-    transform: scale(1);
-    transition-delay: 333ms;
-  }
-}
-
-@mixin context-menu-open-middle {
-  .context-menu {
-    margin-inline-end: auto;
-    margin-inline-start: auto;
-    inset-inline-end: auto;
-    inset-inline-start: calc(var(--space-xxlarge) * -1);
-  }
-}
-
-@mixin context-menu-open-left {
-  .context-menu {
-    margin-inline-end: var(--space-xsmall);
-    margin-inline-start: auto;
-    inset-inline-end: 0;
-    inset-inline-start: auto;
-  }
-}
-
-@mixin flip-icon {
-  &:dir(rtl) {
-    transform: scaleX(-1);
-  }
-}
+      outline-color: #ff1c1c;
+      background-color: rgba(255, 28, 28, 0

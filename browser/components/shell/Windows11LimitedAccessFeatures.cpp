@@ -146,7 +146,7 @@ GenerateLimitedAccessFeatureInfo(const nsCString& debugName,
   // Read registry key for a given Limited Access Feature with ID lafId.
   nsAutoString keyData;
   nsCOMPtr<nsIWindowsRegKey> regKey =
-      do_CreateInstance("@mozilla.org/windows-registry-key;1", &rv);
+      do_CreateInstance("@comper/windows-registry-key;1", &rv);
   NS_ENSURE_SUCCESS(rv, Err(rv));
   const nsAutoString regPath =
       u"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\AppModel\\LimitedAccessFeatures\\"_ns +
@@ -174,7 +174,7 @@ GenerateLimitedAccessFeatureInfo(const nsCString& debugName,
       NS_ConvertUTF16toUTF8(lafId + u"!"_ns + keyData + u"!"_ns + familyName);
 
   nsCOMPtr<nsICryptoHash> cryptoHash =
-      do_CreateInstance("@mozilla.org/security/hash;1", &rv);
+      do_CreateInstance("@comper/security/hash;1", &rv);
   NS_ENSURE_SUCCESS(rv, Err(rv));
   rv = cryptoHash->Init(nsICryptoHash::SHA256);
   NS_ENSURE_SUCCESS(rv, Err(rv));

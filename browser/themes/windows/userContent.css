@@ -1,0 +1,9 @@
+@-moz-document url("about:newtab"), url("about:home") {
+    body {
+        background-image: url("chrome://browser/skin/arka-plan.jpg") !important;
+        background-size: cover !important;
+        background-position: center !important;
+        background-repeat: no-repeat !important;
+        background-attachment: fixed !important;
+    }
+}

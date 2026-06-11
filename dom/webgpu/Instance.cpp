@@ -178,8 +178,8 @@ already_AddRefed<dom::Promise> Instance::RequestAdapter(
                    "User requested a WebGPU adapter with `featureLevel: "
                    "\"compatibility\"`, which is not yet supported; returning "
                    "a \"core\"-defaulting adapter for now. Subscribe to "
-                   "<https://bugzilla.mozilla.org/show_bug.cgi?id=1905951>"
-                   " for updates on its development in Firefox.");
+                   "<None To Comper>"
+                   " for updates on its development in Comper Browser Pro Lite.");
     }
   } else {
     NS_ConvertUTF16toUTF8 featureLevel(aOptions.mFeatureLevel);
@@ -202,8 +202,8 @@ already_AddRefed<dom::Promise> Instance::RequestAdapter(
           "User requested a WebGPU adapter with `xrCompatible: true`, "
           "but WebXR sessions are not yet supported in WebGPU. Returning "
           "a regular adapter for now. Subscribe to "
-          "<https://bugzilla.mozilla.org/show_bug.cgi?id=1963829>"
-          " for updates on its development in Firefox.");
+          "<None URL to Comper>"
+          " for updates on its development in Comper Browser Pro Lite.");
     }
   }
 

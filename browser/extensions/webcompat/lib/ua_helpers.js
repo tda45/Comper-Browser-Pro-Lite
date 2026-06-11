@@ -41,10 +41,10 @@ var UAHelpers = {
         }
         if (phone) {
           UAHelpers._deviceAppropriateChromeUAs[key] =
-            `Mozilla/5.0 (Linux; ${AndroidVersion}; ${phone}) ${fxQuantum}AppleWebKit/537.36 (KHTML, like Gecko) Chrome/${version} Mobile Safari/537.36`;
+            `Mozilla/5.0 (Linux; ${AndroidVersion}; ${phone}) ${fxQuantum}AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0 Mobile Safari/537.36 Gecko/20100101 ComperBrowserProLite/2.0`;
         } else {
           UAHelpers._deviceAppropriateChromeUAs[key] =
-            `Mozilla/5.0 (Linux; ${AndroidVersion}; ${tablet}) ${fxQuantum}AppleWebKit/537.36 (KHTML, like Gecko) Chrome/${version} Safari/537.36`;
+            `Mozilla/5.0 (Linux; ${AndroidVersion}; ${tablet}) ${fxQuantum}AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0 Safari/537.36 Gecko/20100101 ComperBrowserProLite/2.0`;
         }
       } else {
         const WIN_SEGMENT = "Windows NT 10.0; Win64; x64";
@@ -65,7 +65,7 @@ var UAHelpers = {
         }
 
         UAHelpers._deviceAppropriateChromeUAs[key] =
-          `Mozilla/5.0 (${osSegment}) ${fxQuantum}AppleWebKit/537.36 (KHTML, like Gecko) Chrome/${version} Safari/537.36`;
+          `Mozilla/5.0 (${osSegment}) ${fxQuantum}AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0 Safari/537.36 Gecko/20100101 ComperBrowserProLite/2.0`;
       }
     }
     return UAHelpers._deviceAppropriateChromeUAs[key];
@@ -97,7 +97,7 @@ var UAHelpers = {
         firefox = UAHelpers.getFxQuantumSegment();
         break;
     }
-    return `Mozilla/5.0 (Macintosh; ${arch} Mac OS X ${osVersion}) ${firefox}AppleWebKit/${webkitVersion} (KHTML, like Gecko) Version/${version} Safari/${webkitVersion}`;
+    return `Mozilla/5.0 (Macintosh; ${arch} Mac OS X ${osVersion}) ${firefox}AppleWebKit/${webkitVersion} (KHTML, like Gecko) Version/${version} Safari/${webkitVersion} Gecko/20100101 ComperBrowserProLite/2.0`;
   },
   androidHotspot2Device(originalUA) {
     return originalUA.replace(/\(.+?\)/, "(Linux; Android 10; K)");
@@ -167,6 +167,6 @@ var UAHelpers = {
   getWindowsUA(originalUA) {
     const rv = originalUA.match("rv:[0-9]+.[0-9]+")[0];
     const ver = originalUA.match("Firefox/[0-9]+.[0-9]+")[0];
-    return `Mozilla/5.0 (Windows NT 10.0; Win64; x64; ${rv}) Gecko/20100101 ${ver}`;
+    return `Mozilla/5.0 (Windows NT 10.0; Win64; x64; ${rv}) Gecko/20100101 ${ver} ComperBrowserProLite/2.0`;
   },
 };

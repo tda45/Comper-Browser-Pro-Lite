@@ -3,12 +3,15 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 :host {
-  --card-border-radius: var(--border-radius-medium);
-  --card-border-width: var(--border-width);
-  --card-border: var(--card-border-width) solid var(--border-color-card);
-  --card-background-color: var(--background-color-box);
-  --card-focus-outline: var(--focus-outline);
-  --card-box-shadow: var(--box-shadow-card);
+  /* --- COMPER GECE KIRMIZISI VE KARE TASARIM ÖZELLEŞTİRMELERİ --- */
+  --card-border-radius: 0px;                           /* Tam kare kenarlar */
+  --card-border-width: 1px;                            /* İnce şık kenarlık */
+  --card-border: var(--card-border-width) solid #ff3b30; /* Gece kırmızısı parlak kenarlık */
+  --card-background-color: #1a0505;                    /* Derin gece kırmızısı / siyahı arka plan */
+  --card-box-shadow: 0 4px 20px rgba(255, 59, 48, 0.15); /* Hafif kırmızımsı gece ışıması gölgesi */
+  --card-focus-outline: 2px solid #ff453a;             /* Odaklanınca yanan kırmızı çizgi */
+  /* ------------------------------------------------------------- */
+
   --card-padding: var(--space-large);
   --card-gap: var(--card-padding);
   --card-article-gap: var(--space-small);
@@ -17,7 +20,7 @@
 :host {
   display: block;
   border: var(--card-border);
-  border-radius: var(--card-border-radius);
+  border-radius: var(--card-border-radius) !important; /* Tarayıcı genelinden gelen ovalliği ez */
   background-color: var(--card-background-color);
   box-shadow: var(--card-box-shadow);
   box-sizing: border-box;
@@ -55,6 +58,7 @@
 
 summary {
   cursor: pointer;
+  border-radius: 0px !important; /* Akordeon başlıklarını da kare yap */
 }
 
 #heading-wrapper {
@@ -78,7 +82,7 @@ summary {
     background-position: center;
     background-repeat: no-repeat;
     -moz-context-properties: fill;
-    fill: currentColor;
+    fill: #ff453a; /* İkonları da temaya uygun gece kırmızısı yap */
     width: 24px;
     height: 24px;
     min-width: 24px;
@@ -92,6 +96,7 @@ summary {
 #heading {
   font-size: var(--font-size-root);
   font-weight: var(--font-weight-bold);
+  color: #fff5f5; /* Koyu temada okunabilir açık kırmızımsı beyaz yazı */
 }
 
 #content {
@@ -99,6 +104,7 @@ summary {
   padding-inline: var(--card-padding-inline, var(--card-padding));
   border-end-start-radius: var(--card-border-radius);
   border-end-end-radius: var(--card-border-radius);
+  color: #ffd6d6; /* İçerik metinleri için yumuşak kırmızı-gri tonu */
 
   @media (prefers-contrast) {
     :host([type="accordion"]) & {
@@ -111,11 +117,11 @@ summary {
 details {
   > summary {
     list-style: none;
-    border-radius: var(--card-border-radius);
+    border-radius: var(--card-border-radius) !important;
     cursor: pointer;
 
     &:hover {
-      background-color: var(--button-background-color-hover);
+      background-color: #2d0c0c; /* Üzerine gelince biraz daha açık gece kırmızısı */
     }
 
     &:focus-visible {
@@ -144,15 +150,11 @@ details {
 
   &[open] {
     summary {
-      border-end-start-radius: 0;
-      border-end-end-radius: 0;
+      border-end-start-radius: 0 !important;
+      border-end-end-radius: 0 !important;
     }
     @media not (prefers-contrast) {
       #content {
-        /*
-        There is a border shown above this element in prefers-contrast.
-        When there isn't a border, there's no need for the extra space.
-         */
         padding-block-start: 0;
       }
     }

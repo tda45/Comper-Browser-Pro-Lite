@@ -3,8 +3,9 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 #aboutDialogContainer {
-  background-color: #20123a;
-  color: #fff;
+  /* Ana arka plan: Çok derin, asil bir gece kırmızısı/siyah karışımı */
+  background-color: #1a080a;
+  color: #f5f5f5;
   color-scheme: dark;
 }
 
@@ -13,13 +14,15 @@
 }
 
 #bottomBox {
-  background-color: hsla(235, 43%, 10%, 0.5);
+  /* Alt kutu: Ana arka planla uyumlu, biraz daha açık şeffaf bir kırmızı tonu */
+  background-color: rgba(54, 14, 18, 0.6);
   padding: 15px 10px 15px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 #trademark {
   font-size: xx-small;
   text-align: center;
-  color: #999999;
+  color: #aa999a;
   margin-block: 10px;
 }

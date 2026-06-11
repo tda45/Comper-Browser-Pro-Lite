@@ -133,7 +133,7 @@ nsFxrCommandLineHandler::Handle(nsICommandLine* aCmdLine) {
 NS_IMETHODIMP
 nsFxrCommandLineHandler::GetHelpInfo(nsACString& aResult) {
   aResult.AssignLiteral(
-      "  --fxr Creates a new window for Firefox Reality on Desktop when "
+      "  --fxr Creates a new window for Comper Browser Pro Lite Reality on Desktop when "
       "available\n");
   return NS_OK;
 }

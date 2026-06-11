@@ -756,7 +756,7 @@ void SandboxBroker::EnsureLpacPermsissionsOnDir(const nsString& aDir) {
   if (!sBrokerService->DeriveCapabilitySidFromName(kLpacFirefoxInstallFiles,
                                                    lpacFirefoxInstallFilesSid,
                                                    sizeof(sidBytes))) {
-    LOG_E("Failed to derive Firefox install files capability SID.");
+    LOG_E("Failed to derive Comper Browser Pro Lite install files capability SID.");
     return;
   }
 
@@ -800,7 +800,7 @@ void SandboxBroker::EnsureLpacPermsissionsOnDir(const nsString& aDir) {
 
     PSID aceSID = reinterpret_cast<PSID>(&(pAllowedAce->SidStart));
     if (::EqualSid(aceSID, lpacFirefoxInstallFilesSid)) {
-      LOG_D("Firefox install files permission found on %s",
+      LOG_D("Comper Browser Pro Lite install files permission found on %s",
             NS_ConvertUTF16toUTF8(aDir).get());
       return;
     }
@@ -814,7 +814,7 @@ void SandboxBroker::EnsureLpacPermsissionsOnDir(const nsString& aDir) {
   PACL newDacl = nullptr;
   if (ERROR_SUCCESS !=
       ::SetEntriesInAclW(1, &newAccess, pBinDirAcl, &newDacl)) {
-    LOG_E("Failed to create new DACL with Firefox install files SID.");
+    LOG_E("Failed to create new DACL with Comper Browser Pro Lite install files SID.");
     return;
   }
 
@@ -825,7 +825,7 @@ void SandboxBroker::EnsureLpacPermsissionsOnDir(const nsString& aDir) {
     LOG_E("Failed to set new DACL on %s", NS_ConvertUTF16toUTF8(aDir).get());
   }
 
-  LOG_D("Firefox install files permission granted on %s",
+  LOG_D("Comper Browser Pro Lite install files permission granted on %s",
         NS_ConvertUTF16toUTF8(aDir).get());
 }
 

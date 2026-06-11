@@ -29,12 +29,8 @@
         persist="screenX screenY width height sizemode"
         data-l10n-sync="true">
 <head>
-  <!-- CSP might be disabled by C++ code. -->
   <meta http-equiv="Content-Security-Policy" content="script-src chrome: moz-src: resource: 'report-sample'" />
 
-  <!-- The "global.css" stylesheet is imported first to allow other stylesheets to
-      override rules using selectors with the same specificity. This applies to
-      both "content" and "skin" packages, which bug 1385444 will unify later. -->
   <link rel="stylesheet" href="chrome://global/skin/global.css" />
 
   <link
@@ -90,7 +86,6 @@
   <link rel="localization" href="toolkit/global/contextual-identity.ftl"/>
   <link rel="localization" href="toolkit/global/textActions.ftl"/>
   <link rel="localization" href="toolkit/printing/printUI.ftl"/>
-  <!-- Untranslated FTL files -->
   <link rel="localization" href="preview/credentialChooser.ftl" />
   <link rel="localization" href="preview/enUS-searchFeatures.ftl" />
   <link rel="localization" href="preview/interventions.ftl" />
@@ -140,7 +135,6 @@
 
   <html:div id="a11y-announcement" role="alert"/>
 
-  <!-- Put it at the very end to make sure it's not covered by anything. -->
   <html:div id="fullscr-toggler" hidden="hidden"/>
 </html:body>
 </html>

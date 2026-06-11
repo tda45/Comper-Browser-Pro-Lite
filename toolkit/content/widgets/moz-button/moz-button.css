@@ -32,17 +32,21 @@ button {
 
 @media not ((prefers-contrast) or (forced-colors)) {
   button.badged::after {
-    background-color: var(--button-attention-dot-color, var(--attention-dot-color));
+    background-color: #ff453a; /* Bildirim noktasını parlak kırmızı yap */
   }
 }
 
 .button-background {
   box-sizing: border-box;
   min-height: var(--button-min-height);
-  border: var(--button-border);
-  border-radius: var(--button-border-radius);
-  background-color: var(--button-background-color);
-  color: var(--button-text-color);
+  
+  /* --- COMPER GECE KIRMIZISI VE KARE BUTON ÖZELLEŞTİRMELERİ --- */
+  border: 1px solid #ff3b30;                           /* İnce gece kırmızısı kenarlık */
+  border-radius: 0px !important;                       /* Keskin kare köşeler */
+  background-color: #1a0505;                           /* Derin gece kırmızısı arka plan */
+  color: #fff5f5;                                      /* Açık kırmızımsı beyaz metin */
+  /* ------------------------------------------------------------- */
+  
   padding: var(--button-padding);
   font-weight: var(--button-font-weight);
   /* Ensure font-size isn't overridden by widget styling (e.g. in forms.css) */
@@ -65,103 +69,103 @@ button {
     width: 6px;
     inset-block-start: var(--space-xxsmall);
     inset-inline-end: var(--space-xxsmall);
-    background-color: var(--attention-dot-color);
-    border-radius: var(--border-radius-circle);
+    background-color: #ff453a;
+    border-radius: 0px !important;                    /* Bildirim noktasını da kare yap */
   }
 
   button:hover > & {
-    background-color: var(--button-background-color-hover);
-    border-color: var(--button-border-color-hover);
-    color: var(--button-text-color-hover);
+    background-color: #2d0c0c;                         /* Hover durumunda biraz daha açık gece kırmızısı */
+    border-color: #ff453a;                             /* Hover kenarlığı daha parlak kırmızı */
+    color: #ffffff;
   }
 
   button:hover:active:not(:disabled) > & {
-    background-color: var(--button-background-color-active);
-    border-color: var(--button-border-color-active);
-    color: var(--button-text-color-active);
+    background-color: #4a1212;                         /* Tıklanma anında kor kırmızısı */
+    border-color: #ff453a;
+    color: #ffffff;
   }
 
   button:disabled > & {
-    background-color: var(--button-background-color-disabled);
-    border-color: var(--button-border-color-disabled);
-    color: var(--button-text-color-disabled);
+    background-color: #0f0303;
+    border-color: #551310;
+    color: #664444;
     opacity: var(--button-opacity-disabled);
   }
 
   button:focus-visible > & {
-    outline: var(--focus-outline);
+    outline: 2px solid #ff453a;                        /* Odaklanınca yanan kırmızı çizgi */
     outline-offset: var(--focus-outline-offset);
   }
 
   &[type="primary"] {
-    background-color: var(--button-background-color-primary);
-    border-color: var(--button-border-color-primary);
-    color: var(--button-text-color-primary);
+    background-color: #ff3b30;                         /* Birincil butonlar direkt parlak kırmızı */
+    border-color: #ff453a;
+    color: #ffffff;
 
     button:hover > & {
-      background-color: var(--button-background-color-primary-hover);
-      border-color: var(--button-border-color-primary-hover);
-      color: var(--button-text-color-primary-hover);
+      background-color: #ff453a;
+      border-color: #ff5e55;
+      color: #ffffff;
     }
 
     button:hover:active:not(:disabled) > & {
-      background-color: var(--button-background-color-primary-active);
-      border-color: var(--button-border-color-primary-active);
-      color: var(--button-text-color-primary-active);
+      background-color: #d12c22;
+      border-color: #ff3b30;
+      color: #ffffff;
     }
 
     button:disabled > & {
-      background-color: var(--button-background-color-primary-disabled);
-      border-color: var(--button-border-color-primary-disabled);
-      color: var(--button-text-color-primary-disabled);
+      background-color: #551310;
+      border-color: #3d0d0b;
+      color: #995555;
     }
   }
 
   &[type="destructive"] {
-    background-color: var(--button-background-color-destructive);
-    border-color: var(--button-border-color-destructive);
-    color: var(--button-text-color-destructive);
+    background-color: #8b0000;                         /* Yıkıcı butonlar daha koyu kan kırmızısı */
+    border-color: #ff3b30;
+    color: #ffffff;
 
     button:hover > & {
-      background-color: var(--button-background-color-destructive-hover);
-      border-color: var(--button-border-color-destructive-hover);
-      color: var(--button-text-color-destructive-hover);
+      background-color: #a00000;
+      border-color: #ff453a;
+      color: #ffffff;
     }
 
     button:hover:active:not(:disabled) > & {
-      background-color: var(--button-background-color-destructive-active);
-      border-color: var(--button-border-color-destructive-active);
-      color: var(--button-text-color-destructive-active);
+      background-color: #660000;
+      border-color: #ff3b30;
+      color: #ffffff;
     }
 
     button:disabled > & {
-      background-color: var(--button-background-color-destructive-disabled);
-      border-color: var(--button-border-color-destructive-disabled);
-      color: var(--button-text-color-destructive-disabled);
+      background-color: #330000;
+      border-color: #220000;
+      color: #884444;
     }
   }
 
   &[type~="ghost"] {
-    background-color: var(--button-background-color-ghost);
-    border-color: var(--button-border-color-ghost);
-    color: var(--button-text-color-ghost);
+    background-color: transparent;
+    border-color: transparent;
+    color: #ffd6d6;
 
     button:hover > & {
-      background-color: var(--button-background-color-ghost-hover);
-      border-color: var(--button-border-color-ghost-hover);
-      color: var(--button-text-color-ghost-hover);
+      background-color: rgba(255, 59, 48, 0.15);       /* Saydam arkaya hafif kırmızı şeffaflık */
+      border-color: transparent;
+      color: #ffffff;
     }
 
     button:hover:active:not(:disabled) > & {
-      background-color: var(--button-background-color-ghost-active);
-      border-color: var(--button-border-color-ghost-active);
-      color: var(--button-text-color-ghost-active);
+      background-color: rgba(255, 59, 48, 0.3);
+      border-color: transparent;
+      color: #ffffff;
     }
 
     button:disabled > & {
-      background-color: var(--button-background-color-ghost-disabled);
-      border-color: var(--button-border-color-ghost-disabled);
-      color: var(--button-text-color-ghost-disabled);
+      background-color: transparent;
+      border-color: transparent;
+      color: #553333;
     }
   }
 
@@ -190,7 +194,7 @@ button {
   img,
   &[type~="icon"]:not(.labelled) {
     -moz-context-properties: fill, fill-opacity, stroke;
-    fill: var(--button-icon-fill);
+    fill: #ff453a;                                     /* İkon içlerini kırmızıya boya */
     stroke: var(--button-icon-stroke);
   }
 

@@ -23,3 +23,28 @@ input {
 [hidden] {
   display: none !important; // stylelint-disable-line declaration-no-important
 }
+
+// --- COMPER BROWSER REMASTER ÖZEL UI TEMİZLEME KODLARI ---
+
+// 1. En çok ziyaret edilen siteler (Top Sites / Shortcuts) panelini tamamen gizler
+.top-sites,
+#top-sites-wrapper,
+.top-sites-list {
+  display: none !important;
+}
+
+// 2. Keşfet, Pocket hikayeleri veya geçmiş kartları bölümlerini tamamen gizler
+.feed,
+#feed-wrapper,
+.section-wrapper {
+  display: none !important;
+}
+
+// 3. Arama çubuğuna odaklanıldığında (focus) veya üzerine gelindiğinde kenarlık rengini Comper Kırmızısı yapar
+input[type="text"]:focus,
+.search-wrapper input:focus,
+.search-handshake-wrapper:focus-within {
+  border-color: #ff1c1c !important;
+  box-shadow: 0 0 0 3px rgba(255, 28, 28, 0.4) !important;
+  outline: none !important;
+}

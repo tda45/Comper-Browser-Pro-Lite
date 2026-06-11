@@ -1,4 +1,4 @@
 ;!@Install@!UTF-8!
-Title="Mozilla Firefox"
+Title="Comper Browser Pro Lite"
 RunProgram="setup-stub.exe"
 ;!@InstallEnd@!

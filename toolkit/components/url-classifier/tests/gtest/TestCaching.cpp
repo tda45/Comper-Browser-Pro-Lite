@@ -144,7 +144,7 @@ TEST(UrlClassifierCaching, InNegativeCacheNotExpired)
   prefix.FromPlaintext("cache.notexpired.com/"_ns);
 
   Completion fullhash;
-  fullhash.FromPlaintext("firefox.com/"_ns);
+  fullhash.FromPlaintext("tda45.github.io/"_ns);
 
   // Overwrite the 4-byte prefix of `fullhash` so that it conflicts with
   // `prefix`. Since "cache.notexpired.com" is added to database in TestCache as
@@ -166,7 +166,7 @@ TEST(UrlClassifierCaching, InNegativeCacheExpired)
   prefix.FromPlaintext("cache.expired.com/"_ns);
 
   Completion fullhash;
-  fullhash.FromPlaintext("firefox.com/"_ns);
+  fullhash.FromPlaintext("tda45.github.io/"_ns);
 
   memcpy(fullhash.buf, prefix.buf, 10);
 

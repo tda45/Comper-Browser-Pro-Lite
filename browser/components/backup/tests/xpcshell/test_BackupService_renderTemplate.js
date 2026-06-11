@@ -164,7 +164,7 @@ add_task(async function test_moz_browser_handling() {
 
   evalSandbox.navigator = {
     userAgent:
-      "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:129.0) Gecko/20100101 Firefox/129.0",
+      "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:129.0) Gecko/20100101 Firefox/129.0 Chrome/127.0",
   };
   evalSandbox.document = {
     body: {
@@ -204,7 +204,7 @@ add_task(async function test_non_moz_browser_handling() {
 
   evalSandbox.navigator = {
     userAgent:
-      "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.4.1 Safari/605.1.15",
+      "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.4.1 Safari/605.1.15 Chrome/127.0",
   };
   evalSandbox.document = {
     body: {

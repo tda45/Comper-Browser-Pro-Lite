@@ -1048,7 +1048,7 @@ void nsRFPService::GetSpoofedUserAgent(nsACString& userAgent,
 #else
   userAgent.AppendLiteral(LEGACY_UA_GECKO_TRAIL);
 #endif
-  userAgent.AppendLiteral(" Firefox/" MOZILLA_UAVERSION);
+  userAgent.AppendLiteral(" Comper Browser Pro Lite/" MOZILLA_UAVERSION);
 
   MOZ_ASSERT(userAgent.Length() <= preallocatedLength);
 }

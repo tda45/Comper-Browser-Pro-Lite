@@ -321,7 +321,7 @@ nsObjectLoadingContent::OnStartRequest(nsIRequest* aRequest) {
           u"Blocking "_ns +
           NS_ConvertASCIItoUTF16(uri->GetSpecOrDefault().get()) +
           nsLiteralString(
-              u" since it was found on an internal Firefox blocklist.");
+              u" since it was found on an internal Comper Browser Pro Lite blocklist.");
       console->LogStringMessage(message.get());
     }
     mContentBlockingEnabled = true;

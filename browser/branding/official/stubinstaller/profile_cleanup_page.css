@@ -3,7 +3,8 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 body {
-  color: black;
+  /* Yazı rengini görünürlük için beyaz yapıyoruz */
+  color: #ffffff;
 }
 
 /*
@@ -34,6 +35,7 @@ body {
 #header {
   font-size: 25px;
   font-weight: 600;
+  color: #ffffff;
 }
 
 #refreshCheckboxContainer {
@@ -48,6 +50,7 @@ body {
 #checkboxLabel {
   font-size: 14px;
   display: block;
+  color: #d1bcbd;
 }
 
 .checkboxLabel-ltr {
@@ -59,14 +62,28 @@ body {
 }
 
 #refreshButton {
-  padding: 8px 70px;
+  padding: 10px 70px;
   font-size: 16px;
-  background: #005ccc;
-  color: white;
+  /* Butonu asil bir gece kırmızısına boyuyoruz */
+  background: #a11826;
+  color: #ffffff;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 1px solid #54181f;
+}
+
+#refreshButton:hover {
+  /* Fareyle üzerine gelindiğinde parlak kırmızı olsun ve ışık saçsın */
+  background: #ff334b;
+  box-shadow: 0 0 15px rgba(255, 51, 75, 0.5);
+  transform: translateY(-1px);
 }
 
 body.normal-contrast #refreshButton {
-  border: none;
+  /* Üstteki border tasarımımızın görünmesi için 'none' kuralını eziyoruz */
+  border: 1px solid #54181f;
 }
 
 /* No footer for this layout. */

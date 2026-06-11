@@ -1,62 +1,69 @@
 .logo-and-wordmark-wrapper {
-  // Override default h1 margins
+  // Varsayılan dış boşlukları sıfırlıyoruz
   margin-block: 0;
+  
+  // Logoyu senin o beğendiğin sol üst köşeye asil bir şekilde sabitliyoruz
+  position: absolute;
+  inset-inline-start: 40px; 
+  inset-block-start: 40px;  
+  z-index: 5;
 }
 
 .logo-and-wordmark {
-  $logo-size: 64px;
-  $wordmark-size: 105px;
+  $logo-size: 42px; // Beğendiğin o kibar, minimalist boyut
+  $wordmark-size: 95px;
 
   align-items: center;
   display: flex;
   justify-content: center;
-  // Bug 1967304 - Large number (48px)
-  margin-block-end: var(--space-xxlarge);
+  margin-block-end: 0 !important; // Arama çubuğunu aşağı itmesin, düzeni bozmasın
 
-  // Edge case for users who have pocket stories turned off
-  .no-recommended-stories & {
-    // Bug 1967304 - Large number (40px)
-    margin-block-end: calc(var(--space-large) + var(--space-xlarge));
-  }
-
+  // Değiştirdiğin ve özelleştirdiğin o harika logo alanı
   .logo {
     display: inline-block;
     height: $logo-size;
     width: $logo-size;
+    // Orijinal dosya yollarına asla dokunmuyoruz, senin değiştirdiğin iç varlıkları aynen çekiyor
     background: image-set(url('chrome://branding/content/about-logo.png'), url('chrome://branding/content/about-logo@2x.png') 2x) no-repeat center;
-    background-size: $logo-size;
+    background-size: contain;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4)); // Duvar kağıdının üstünde şık durması için hafif gölge
   }
 
+  // Değiştirdiğin logo yazısı (wordmark) alanı
   .wordmark {
     background: url('chrome://branding/content/firefox-wordmark.svg') no-repeat center center;
-    background-size: $wordmark-size;
+    background-size: contain;
     -moz-context-properties: fill;
     display: inline-block;
-    fill: var(--newtab-wordmark-color);
+    
+    // İşte burası sihirli nokta! Yazının rengini tam o beğendiğin asil Comper Kırmızısına boyuyoruz
+    fill: #ff1c1c !important; 
+    
     height: $logo-size;
-    margin-inline-start: var(--space-large);
+    margin-inline-start: 12px; // Logo ile yazı arasındaki o tatlı boşluk
     width: $wordmark-size;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
 
-    // Contrast fix for users who have wallpapers set
+    // Duvar kağıdı açık/koyu renk olduğunda tarayıcının görünümü bozmasını engelliyoruz
     @include wallpaper-contrast-fix;
   }
 
+  // Küçük ekranlarda da o beğendiğin kompakt düzen şaşmasın diye sabitleme
   @media (max-width: $break-point-medium - 1) {
-    $logo-size-small: 64px;
-    $wordmark-small-size: 100px;
+    $logo-size-small: 36px;
+    $wordmark-small-size: 80px;
 
     .logo {
-      background-size: $logo-size-small;
+      background-size: contain;
       height: $logo-size-small;
       width: $logo-size-small;
     }
 
     .wordmark {
-      background-size: $wordmark-small-size;
+      background-size: contain;
       height: $logo-size-small;
       width: $wordmark-small-size;
-      margin-inline-start: var(--space-medium);
+      margin-inline-start: 8px;
     }
   }
 }
-

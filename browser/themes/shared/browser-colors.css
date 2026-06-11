@@ -15,16 +15,17 @@
     --toolbox-textcolor-inactive: InactiveCaptionText;
   }
 
-  --sidebar-background-color: -moz-sidebar;
-  --sidebar-text-color: -moz-sidebartext;
-  --sidebar-border-color: -moz-sidebarborder;
+  /* Yan Panel: Çok derin kızıl tonlar */
+  --sidebar-background-color: light-dark(#1d0b0d, #140506);
+  --sidebar-text-color: light-dark(#f5f5f5, #e0e0e0);
+  --sidebar-border-color: light-dark(#3a1216, #260a0c);
 
   --tabs-navbar-separator-color: ThreeDShadow;
   --tabs-navbar-separator-style: solid;
 
-  --short-notification-background: #0250bb;
-  --short-notification-gradient: #9059ff;
-  --warning-icon-bgcolor: light-dark(#ffa436, #ffbd4f);
+  --short-notification-background: #6e161e;
+  --short-notification-gradient: #360e12;
+  --warning-icon-bgcolor: light-dark(#ff5263, #ff2e43);
 
   --urlbar-box-bgcolor: var(--button-background-color-hover);
   --urlbar-box-focus-bgcolor: var(--button-background-color);
@@ -48,12 +49,13 @@
     }
   }
 
+  /* Kullanıcı ekstra tema yüklerse link uyumları */
   &[lwtheme] {
-    --link-color: light-dark(var(--color-blue-60), var(--color-cyan-30));
-    --link-color-hover: light-dark(var(--color-blue-70), var(--color-cyan-20));
-    --link-color-active: light-dark(var(--color-blue-80), var(--color-cyan-10));
-    --tabs-navbar-separator-color: light-dark(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.3));
-    --attention-dot-color: light-dark(#2ac3a2, #54ffbd);
+    --link-color: light-dark(#ff334b, #ff6679);
+    --link-color-hover: light-dark(#d9142b, #ff1a35);
+    --link-color-active: light-dark(#b30016, #cc001a);
+    --tabs-navbar-separator-color: light-dark(rgba(54, 14, 18, 0.2), rgba(0, 0, 0, 0.4));
+    --attention-dot-color: #ff334b;
 
     --toolbox-bgcolor: var(--lwt-accent-color);
     --toolbox-bgcolor-inactive: var(--lwt-accent-color-inactive, var(--lwt-accent-color));
@@ -61,94 +63,97 @@
     --toolbox-textcolor-inactive: var(--lwt-text-color, currentColor);
 
     @media not (prefers-contrast) {
-      --focus-outline-color: light-dark(#0061e0, #00ddff);
+      --focus-outline-color: #ff334b;
     }
   }
 
   @media (prefers-color-scheme: dark) {
-    /* Increase the contrast of urlbar boxes in dark mode.
-       In practice these are bumped-up --button(-hover)-bgcolor rules */
     --urlbar-box-bgcolor: color-mix(in srgb, currentColor 16%, transparent);
     --urlbar-box-focus-bgcolor: color-mix(in srgb, currentColor 16%, transparent);
     --urlbar-box-hover-bgcolor: color-mix(in srgb, currentColor 22%, transparent);
   }
 }
 
-/**
- * We intentionally do not use the custom colors on linux or macOS with system
- * theme enabled, instead choosing to fall back to system colors and
- * transparencies in order to look more native.
- */
 /* stylelint-disable-next-line media-query-no-invalid */
 @media not ((prefers-contrast) or -moz-pref("browser.theme.native-theme")) {
   :root:not([lwtheme]) {
-    --color-accent-primary: light-dark(rgb(0, 97, 224), rgb(0, 221, 255));
-    --button-text-color-primary: light-dark(rgb(251, 251, 254), rgb(43, 42, 51));
-    --button-background-color: light-dark(rgba(207, 207, 216, 0.33), rgba(0, 0, 0, 0.33));
-    --button-background-color-hover: light-dark(rgba(207, 207, 216, 0.66), rgba(207, 207, 216, 0.2));
-    --button-background-color-active: light-dark(rgb(207, 207, 216), rgba(207, 207, 216, 0.4));
-    --button-text-color: light-dark(rgb(21, 20, 26), rgb(251, 251, 254));
+    /* Genel Vurgu Rengi: Gece kırmızısı patlaması */
+    --color-accent-primary: light-dark(#a11826, #ff334b);
+    --button-text-color-primary: #fbfbfe;
+    
+    /* Butonlar: Şeffaf kızıl kaplamalar */
+    --button-background-color: light-dark(rgba(161, 24, 38, 0.15), rgba(0, 0, 0, 0.4));
+    --button-background-color-hover: light-dark(rgba(161, 24, 38, 0.3), rgba(161, 24, 38, 0.25));
+    --button-background-color-active: light-dark(rgba(161, 24, 38, 0.5), rgba(161, 24, 38, 0.4));
+    --button-text-color: light-dark(#1f0507, #fbfbfe);
 
-    --arrowpanel-background: light-dark(white, rgb(66, 65, 77));
-    --arrowpanel-color: light-dark(black, rgb(251, 251, 254));
-    --arrowpanel-border-color: light-dark(rgb(240, 240, 244), rgb(82, 82, 94));
+    /* Sağ Tık ve Ayar Panelleri: Kadife Gece Siyahı/Kırmızısı */
+    --arrowpanel-background: light-dark(#260a0c, #140506);
+    --arrowpanel-color: light-dark(#f5f5f5, #fbfbfe);
+    --arrowpanel-border-color: light-dark(#54181f, #360e12);
 
-    --arrowpanel-dimmed: light-dark(color-mix(in srgb, currentColor 12%, transparent), color-mix(in srgb, currentColor 17%, transparent));
-    --arrowpanel-dimmed-further: light-dark(color-mix(in srgb, currentColor 20%, transparent), color-mix(in srgb, currentColor 14%, transparent));
+    --arrowpanel-dimmed: color-mix(in srgb, currentColor 12%, transparent);
+    --arrowpanel-dimmed-further: color-mix(in srgb, currentColor 20%, transparent);
 
-    --input-color: light-dark(rgb(21, 20, 26), rgb(251, 251, 254));
-    --input-bgcolor: light-dark(rgb(255, 255, 255), #42414d);
+    /* Girdi Alanları */
+    --input-color: light-dark(#1f0507, #fbfbfe);
+    --input-bgcolor: light-dark(#ffffff, #260a0c);
 
-    --tab-selected-bgcolor: light-dark(rgb(255, 255, 255), rgba(106, 106, 120, 0.7));
-    --tab-selected-textcolor: light-dark(rgb(21, 20, 26), rgb(255, 255, 255));
+    /* SEKMELER (Tabs): Aktif sekme muazzam bir gece kırmızısı tonunda açılacak */
+    --tab-selected-bgcolor: light-dark(#360e12, rgba(84, 24, 31, 0.8));
+    --tab-selected-textcolor: #ffffff;
     --tabs-navbar-separator-style: none;
 
-    /* stylelint-disable-next-line media-query-no-invalid */
+    /* Üst Bar Başlık Alanı (Gözü yormayan derin kızıl karanlık) */
     @media not ((-moz-windows-mica) or ((-moz-windows-accent-color-in-titlebar) and -moz-pref("browser.theme.windows.accent-color-in-tabs.enabled"))) {
-      --toolbox-bgcolor: light-dark(rgb(234, 234, 237), rgb(28, 27, 34));
-      --toolbox-textcolor: light-dark(rgb(21, 20, 26), rgb(251, 251, 254));
+      --toolbox-bgcolor: light-dark(#21090b, #120304);
+      --toolbox-textcolor: light-dark(#e6d5d6, #fbfbfe);
       --toolbox-bgcolor-inactive: var(--toolbox-bgcolor);
       --toolbox-textcolor-inactive: var(--toolbox-textcolor);
       &:where([customtitlebar]) {
-        --toolbox-bgcolor-inactive: light-dark(rgb(235, 235, 239), rgb(31, 30, 37));
+        --toolbox-bgcolor-inactive: light-dark(#1a0608, #0f0203);
       }
     }
 
-    --toolbar-color: light-dark(rgb(21, 20, 26), rgb(251, 251, 254));
-    --toolbar-bgcolor: light-dark(#f9f9fb, rgb(43, 42, 51));
+    /* Adres Çubuğunun Olduğu Ana Toolbar */
+    --toolbar-color: light-dark(#f5f5f5, #fbfbfe);
+    --toolbar-bgcolor: light-dark(#2a0b0e, #1a0507);
 
-    --toolbarbutton-icon-fill: light-dark(rgb(91, 91, 102), rgb(251, 251, 254));
-    --toolbarbutton-icon-fill-attention: light-dark(rgb(0, 97, 224), rgb(0, 221, 255));
-    --toolbarbutton-icon-fill-attention-text: light-dark(rgb(240, 240, 244), rgb(28, 27, 34));
+    /* Simgelerin Renkleri */
+    --toolbarbutton-icon-fill: light-dark(#d1bcbd, #fbfbfe);
+    --toolbarbutton-icon-fill-attention: #ff334b;
+    --toolbarbutton-icon-fill-attention-text: #120304;
 
+    /* Adres Çubuğu İç Alanı (Arama çubuğu) */
     --toolbar-field-border-color: transparent;
-    --toolbar-field-background-color: light-dark(rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.3));
-    --toolbar-field-color: light-dark(rgb(21, 20, 26), rgb(251, 251, 254));
-    --toolbar-field-focus-background-color: light-dark(white, rgb(66, 65, 77));
-    --toolbar-field-focus-color: light-dark(black, rgb(251, 251, 254));
+    --toolbar-field-background-color: light-dark(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5));
+    --toolbar-field-color: light-dark(#ffffff, #fbfbfe);
+    --toolbar-field-focus-background-color: light-dark(#140506, #2a0b0e);
+    --toolbar-field-focus-color: #ffffff;
 
-    --urlbarView-action-color: light-dark(rgb(91, 91, 102), rgb(191, 191, 201));
-    --urlbarView-separator-color: light-dark(rgb(240, 240, 244), rgb(82, 82, 94));
-    --urlbarView-highlight-background: light-dark(#e0e0e6, rgb(43, 42, 51));
-    --urlbarView-highlight-color: light-dark(rgb(21, 20, 26), rgb(251, 251, 254));
-    --urlbarView-hover-background: light-dark(rgb(240, 240, 244), var(--arrowpanel-dimmed));
+    /* Adres Çubuğu Aşağı Açılan Arama Sonuçları Paneli */
+    --urlbarView-action-color: light-dark(#ff6679, #ff99a6);
+    --urlbarView-separator-color: light-dark(#54181f, #360e12);
+    --urlbarView-highlight-background: #54181f;
+    --urlbarView-highlight-color: #ffffff;
+    --urlbarView-hover-background: light-dark(#360e12, var(--arrowpanel-dimmed));
 
-    --urlbar-box-bgcolor: light-dark(white, rgb(66, 65, 77));
-    --urlbar-icon-fill-opacity: 0.72;
+    --urlbar-box-bgcolor: light-dark(#360e12, #260a0c);
+    --urlbar-icon-fill-opacity: 0.85;
     @media (prefers-color-scheme: dark) {
       --urlbar-icon-fill-opacity: 1;
     }
 
     /* stylelint-disable-next-line media-query-no-invalid */
     @media not -moz-pref("sidebar.revamp") {
-      --chrome-content-separator-color: light-dark(rgb(204, 204, 204), hsl(240, 5%, 5%));
+      --chrome-content-separator-color: light-dark(#360e12, #000000);
     }
 
-    --link-color: light-dark(rgb(0, 97, 224), rgb(0, 221, 255));
-    --attention-dot-color: light-dark(#2ac3a2, #54ffbd);
+    --link-color: #ff334b;
+    --attention-dot-color: #ff334b;
 
-    --sidebar-background-color: light-dark(white, rgb(28, 27, 34));
-    --sidebar-text-color: light-dark(rgb(21, 20, 26), rgb(249, 249, 250));
+    --sidebar-background-color: light-dark(#1a0507, #120304);
+    --sidebar-text-color: light-dark(#f5f5f5, #f9f9fa);
     --sidebar-border-color: var(--border-color-card);
   }
 }

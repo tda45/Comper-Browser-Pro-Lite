@@ -800,7 +800,7 @@ nsresult Http2StreamBase::ConvertResponseHeaders(
   // The decoding went ok. Now we can customize and clean up.
 
   aHeadersIn.Truncate();
-  aHeadersOut.AppendLiteral("X-Firefox-Spdy: h2");
+  aHeadersOut.AppendLiteral("X-Comper-Spdy: h2");
   aHeadersOut.AppendLiteral("\r\n\r\n");
   LOG(("decoded response headers are:\n%s", aHeadersOut.BeginReading()));
   HandleResponseHeaders(aHeadersOut, httpResponseCode);

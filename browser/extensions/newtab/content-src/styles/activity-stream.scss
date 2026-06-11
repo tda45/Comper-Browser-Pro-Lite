@@ -27,18 +27,18 @@ body,
 }
 
 body {
+  // Comper Browser Remaster Özel Arka Plan Entegrasyonu
   background-color: var(--newtab-background-color);
   font-family: system-ui;
   font-size: var(--font-size-root);
 
-  // rules for HNT wallpapers
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
-  background-image:
-    var(--newtab-wallpaper, ''),
-    linear-gradient(to right, var(--newtab-wallpaper-color, ''), var(--newtab-wallpaper-color, ''));
+  
+  // Burada orijinal Mozilla duvar kağıdı değişkenlerini bypass ederek kendi görselinin kusursuz durmasını sağlıyoruz
+  background-image: var(--newtab-wallpaper, none); 
 }
 
 .no-scroll {
@@ -51,8 +51,8 @@ h2 {
 }
 
 .inner-border {
-  border: $border-secondary;
-  border-radius: var(--border-radius-small);
+  border: 1px solid rgba(255, 28, 28, 0.2); // İç çerçeve çizgilerini Comper Kırmızısına uyarladık
+  border-radius: 0px !important; // İç çerçeve hatları da keskin dikdörtgen tasarıma uyarlandı
   height: 100%;
   inset-inline-start: 0;
   pointer-events: none;
@@ -83,7 +83,7 @@ h2 {
 }
 
 .actions {
-  border-top: $border-secondary;
+  border-top: 1px solid rgba(255, 28, 28, 0.2);
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -92,12 +92,12 @@ h2 {
   padding: var(--space-large) var(--space-xlarge) 0;
 }
 
-// Default button (grey)
+// Buton stilleri ve Odaklanma Efektleri
 .button,
 .actions button {
   background-color: var(--newtab-button-secondary-color);
-  border: $border-primary;
-  border-radius: var(--border-radius-small);
+  border: 1px solid rgba(255, 28, 28, 0.4); // Standart buton kenarlıkları kırmızımsı
+  border-radius: 0px !important; // Jilet gibi keskin Comper butonları!
   color: inherit;
   cursor: pointer;
   margin-block-end: var(--space-large);
@@ -106,8 +106,9 @@ h2 {
 
   &:hover:not(.dismiss),
   &:focus:not(.dismiss) {
-    box-shadow: $shadow-primary;
+    box-shadow: 0 0 0 4px rgba(255, 28, 28, 0.4); // Üzerine gelindiğinde Comper Kırmızısı parlama efekti
     transition: box-shadow 150ms;
+    border-color: #ff1c1c;
   }
 
   &.dismiss {
@@ -115,27 +116,36 @@ h2 {
     border: 0;
     padding: 0;
     text-decoration: underline;
+    
+    &:hover {
+      color: #ff1c1c; // İptal/Yoksay butonları üzerine gelince kırmızı olsun
+    }
   }
 
-  // Blue button
+  // Comper Kırmızısı Ana İşlem Butonları (Kaydet, bitti vs.)
   &.primary,
   &.done {
-    background-color: var(--newtab-primary-action-background);
-    border: solid 1px var(--newtab-primary-action-background);
-    color: var(--newtab-primary-element-text-color);
+    background-color: #ff1c1c !important;
+    border: solid 1px #ff1c1c !important;
+    color: #ffffff !important;
     margin-inline-start: auto;
+    border-radius: 0px !important; // Birincil butonlar da jilet gibi
+
+    &:hover {
+      filter: brightness(1.2); // Üzerine gelince kırmızıyı canlandırır
+      box-shadow: 0 0 0 4px rgba(255, 28, 28, 0.3) !important;
+    }
   }
 }
 
+// Global Girdi Alanları Temizliği (Tarayıcı genelindeki tüm arama/metin kutuları)
 input {
   &[type='text'],
   &[type='search'] {
-    border-radius: var(--border-radius-small);
+    border-radius: 0px !important; // Tüm yerleşik input kutularının ovallikleri kökten sıfırlandı!
   }
 }
 
-// These styles are needed for -webkit-line-clamp to work correctly, so reuse
-// this class name while separately setting a clamp value via CSS or JS.
 .clamp {
   -webkit-box-orient: vertical;
   display: -webkit-box;
@@ -143,8 +153,7 @@ input {
   word-break: break-word;
 }
 
-// Components
-// stylelint-disable no-invalid-position-at-import-rule
+// Bileşenlerin çağrıldığı yer (Buralara dokunmuyoruz, sistemi bağlıyor)
 @import '../components/A11yLinkButton/A11yLinkButton';
 @import '../components/Base/Base';
 @import '../components/ErrorBoundary/ErrorBoundary';
@@ -167,7 +176,7 @@ input {
 @import '../components/ModalOverlay/ModalOverlay';
 @import '../components/Notifications/Notifications';
 
-// Discovery Stream Components
+// Discovery Stream Bileşenleri
 @import '../components/DiscoveryStreamComponents/CardGrid/CardGrid';
 @import '../components/DiscoveryStreamComponents/CardSections/CardSections';
 @import '../components/DiscoveryStreamComponents/CollectionCardGrid/CollectionCardGrid';
@@ -204,5 +213,3 @@ input {
 @import '../components/DiscoveryStreamComponents/ReportContent/ReportContent';
 @import '../components/DiscoveryStreamComponents/PersonalizedCard/PersonalizedCard';
 @import '../components/DiscoveryStreamComponents/TrendingSearches/TrendingSearches';
-
-// stylelint-enable no-invalid-position-at-import-rule

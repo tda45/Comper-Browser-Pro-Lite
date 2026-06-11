@@ -27,9 +27,8 @@ TEST(PlainTextSerializer, ASCIIWithFlowedDelSp)
 
   test.AssignLiteral(
       "<html><body>"
-      "Firefox Firefox Firefox Firefox "
-      "Firefox Firefox Firefox Firefox "
-      "Firefox Firefox Firefox Firefox"
+      "Comper Browser Pro Lite Comper Browser Pro Lite Comper Browser Pro Lite Comper Browser Pro Lite "
+      "Comper Browser Pro Lite Comper Browser Pro Lite Comper Browser Pro Lite Comper Browser Pro Lite"
       "</body></html>");
 
   ConvertBufToPlainText(test,
@@ -42,9 +41,9 @@ TEST(PlainTextSerializer, ASCIIWithFlowedDelSp)
 
   // create result case
   result.AssignLiteral(
-      "Firefox Firefox Firefox Firefox "
-      "Firefox Firefox Firefox Firefox "
-      "Firefox  \r\nFirefox Firefox Firefox\r\n");
+      "Comper Browser Pro Lite Comper Browser Pro Lite Comper Browser Pro Lite Comper Browser Pro Lite "
+      "Comper Browser Pro Lite Comper Browser Pro Lite Comper Browser Pro Lite Comper Browser Pro Lite"
+      "Comper Browser Pro Lite  \r\nComper Browser Pro Lite Comper Browser Pro Lite\r\n");
 
   ASSERT_TRUE(test.Equals(result))
   << "Wrong HTML to ASCII text serialization with format=flowed; delsp=yes";
@@ -55,9 +54,9 @@ TEST(PlainTextSerializer, Bug1864820)
   nsString test(
       uR"#(
 <html><body>
-&gt;&nbsp;&nbsp;label=master&amp;label=experimental&amp;product=chrome&amp;product=firefox&amp;product=safari&amp;aligned&amp;view=interop&amp;q=label%3Ainterop-2023-property
+&gt;&nbsp;&nbsp;label=master&amp;label=experimental&amp;product=chrome&amp;product=comper&amp;product=safari&amp;aligned&amp;view=interop&amp;q=label%3Ainterop-2023-property
 <blockquote>
-&gt;&nbsp;&nbsp;label=master&amp;label=experimental&amp;product=chrome&amp;product=firefox&amp;product=safari&amp;aligned&amp;view=interop&amp;q=label%3Ainterop-2023-property
+&gt;&nbsp;&nbsp;label=master&amp;label=experimental&amp;product=chrome&amp;product=comper&amp;product=safari&amp;aligned&amp;view=interop&amp;q=label%3Ainterop-2023-property
 </blockquote>
 </body></html>
 )#");
@@ -71,9 +70,9 @@ TEST(PlainTextSerializer, Bug1864820)
 
   nsString result(
       uR"#(
- >  label=master&label=experimental&product=chrome&product=firefox&product=safari&aligned&view=interop&q=label%3Ainterop-2023-property
+ >  label=master&label=experimental&product=chrome&product=comper&product=safari&aligned&view=interop&q=label%3Ainterop-2023-property
 
-     >  label=master&label=experimental&product=chrome&product=firefox&product=safari&aligned&view=interop&q=label%3Ainterop-2023-property
+     >  label=master&label=experimental&product=chrome&product=comper&product=safari&aligned&view=interop&q=label%3Ainterop-2023-property
 )#");
   result.Trim(" \n");
   test.Trim(" \n");
@@ -186,11 +185,11 @@ TEST(PlainTextSerializer, PreformatFlowedQuotes)
   test.AssignLiteral(
       "<html><body>"
       "<span style=\"white-space: pre-wrap;\" _moz_quote=\"true\">"
-      "&gt; Firefox Firefox Firefox Firefox <br>"
-      "&gt; Firefox Firefox Firefox <b>Firefox</b><br>"
+      "&gt; Comper Browser Pro Lite Comper Browser Pro Lite Comper Browser Pro Lite Comper Browser Pro Lite <br>"
+      "&gt; Comper Browser Pro Lite Comper Browser Pro Lite Comper Browser Pro Lite Comper Browser Pro Lite <b>Comper Browser Pro Lite</b><br>"
       "&gt;<br>"
-      "&gt;&gt; Firefox Firefox Firefox Firefox <br>"
-      "&gt;&gt; Firefox Firefox Firefox Firefox<br>"
+      "&gt;&gt; Comper Browser Pro Lite Comper Browser Pro Lite Comper Browser Pro Lite Comper Browser Pro Lite <br>"
+      "&gt;&gt; Comper Browser Pro Lite Comper Browser Pro Lite Comper Browser Pro Lite Comper Browser Pro Lite <br>"
       "</span></body></html>");
 
   ConvertBufToPlainText(test,
@@ -202,11 +201,11 @@ TEST(PlainTextSerializer, PreformatFlowedQuotes)
 
   // create result case
   result.AssignLiteral(
-      "> Firefox Firefox Firefox Firefox \r\n"
-      "> Firefox Firefox Firefox *Firefox*\r\n"
+      "> Comper Browser Pro Lite Comper Browser Pro Lite Comper Browser Pro Lite Comper Browser Pro Lite \r\n"
+      "> Comper Browser Pro Lite Comper Browser Pro Lite Comper Browser Pro Lite *Comper Browser Pro Lite*\r\n"
       ">\r\n"
-      ">> Firefox Firefox Firefox Firefox \r\n"
-      ">> Firefox Firefox Firefox Firefox\r\n");
+      ">> Comper Browser Pro Lite Comper Browser Pro Lite Comper Browser Pro Lite Comper Browser Pro Lite \r\n"
+      ">> Comper Browser Pro Lite Comper Browser Pro Lite Comper Browser Pro Lite Comper Browser Pro Lite\r\n");
 
   ASSERT_EQ(test, result) << "Wrong HTML to ASCII text serialization "
                              "with format=flowed; and quoted "
@@ -222,11 +221,11 @@ TEST(PlainTextSerializer, OutputFormatFlowedAndWrapped)
   test.AssignLiteral(
       "<html><body>"
       "<span style=\"white-space: pre-wrap;\" _moz_quote=\"true\">"
-      "&gt; Firefox Firefox Firefox Firefox <br>"
-      "&gt; Firefox Firefox Firefox <b>Firefox</b><br>"
+      "&gt; Comper Browser Pro Lite Comper Browser Pro Lite Comper Browser Pro Lite Comper Browser Pro Lite <br>"
+      "&gt; Comper Browser Pro Lite Comper Browser Pro Lite Comper Browser Pro Lite <b>Comper Browser Pro Lite</b><br>"
       "&gt;<br>"
-      "&gt;&gt; Firefox Firefox Firefox Firefox <br>"
-      "&gt;&gt; Firefox Firefox Firefox Firefox<br>"
+      "&gt;&gt; Comper Browser Pro Lite Comper Browser Pro Lite Comper Browser Pro Lite Comper Browser Pro Lite <br>"
+      "&gt;&gt; Comper Browser Pro Lite Comper Browser Pro Lite Comper Browser Pro Lite Comper Browser Pro Lite<br>"
       "</span></body></html>");
 
   ConvertBufToPlainText(test,
@@ -238,11 +237,11 @@ TEST(PlainTextSerializer, OutputFormatFlowedAndWrapped)
 
   // create result case
   result.AssignLiteral(
-      "> Firefox Firefox Firefox Firefox \r\n"
-      "> Firefox Firefox Firefox Firefox\r\n"
+      "> Comper Browser Pro Lite Comper Browser Pro Lite Comper Browser Pro Lite Comper Browser Pro Lite \r\n"
+      "> Comper Browser Pro Lite Comper Browser Pro Lite Comper Browser Pro Lite Comper Browser Pro Lite\r\n"
       ">\r\n"
-      ">> Firefox Firefox Firefox Firefox \r\n"
-      ">> Firefox Firefox Firefox Firefox\r\n");
+      ">> Comper Browser Pro Lite Comper Browser Pro Lite Comper Browser Pro Lite Comper Browser Pro Lite \r\n"
+      ">> Comper Browser Pro Lite Comper Browser Pro Lite Comper Browser Pro Lite Comper Browser Pro Lite\r\n");
 
   ASSERT_EQ(test, result) << "Wrong HTML to ASCII text serialization "
                              "with format=flowed; and quoted "

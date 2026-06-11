@@ -11,3 +11,5 @@
 # For the mozilla-aurora repository, use "aurora".
 MOZ_BRANDING_DIRECTORY=browser/branding/unofficial
 MOZ_OFFICIAL_BRANDING_DIRECTORY=browser/branding/official
+MOZ_APP_NAME=Comper Browser Pro Lite
+MOZ_APP_DISPLAYNAME="Comper Browser Pro Lite"

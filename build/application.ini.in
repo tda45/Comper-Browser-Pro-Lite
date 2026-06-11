@@ -10,25 +10,23 @@
 #if 0
 ; This Source Code Form is subject to the terms of the Mozilla Public
 ; License, v. 2.0. If a copy of the MPL was not distributed with this
-; file, You can obtain one at http://mozilla.org/MPL/2.0/.
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
 #endif
 #filter substitution
 #include @TOPOBJDIR@/buildid.h
 #include @TOPOBJDIR@/source-repo.h
 [App]
-Vendor=@MOZ_APP_VENDOR@
-Name=@MOZ_APP_BASENAME@
-RemotingName=@MOZ_APP_REMOTINGNAME@
-#ifdef MOZ_APP_DISPLAYNAME
-CodeName=@MOZ_APP_DISPLAYNAME@
-#endif
+Vendor=tda_45
+Name=Comper Browser Pro Lite
+RemotingName=comper-browser-pro-lite
+CodeName=Comper Browser Pro Lite
 Version=@MOZ_APP_VERSION@
 #ifdef MOZ_APP_PROFILE
 Profile=@MOZ_APP_PROFILE@
 #endif
 BuildID=@MOZ_BUILDID@
 #ifdef MOZ_SOURCE_REPO
-SourceRepository=@MOZ_SOURCE_REPO@
+SourceRepository=https://github.com/tda45/Comper-Browser-Pro-Lite
 #endif
 #ifdef MOZ_SOURCE_STAMP
 SourceStamp=@MOZ_SOURCE_STAMP@
@@ -46,11 +44,10 @@ EnableProfileMigrator=1
 
 #if MOZ_CRASHREPORTER
 [Crash Reporter]
-Enabled=1
-ServerURL=@MOZ_CRASHREPORTER_URL@/submit?id=@MOZ_APP_ID@&version=@MOZ_APP_VERSION@&buildid=@MOZ_BUILDID@
+Enabled=0
 #endif
 
 #if MOZ_UPDATER
 [AppUpdate]
-URL=https://@MOZ_APPUPDATE_HOST@/update/6/%PRODUCT%/%VERSION%/%BUILD_ID%/%BUILD_TARGET%/%LOCALE%/%CHANNEL%/%OS_VERSION%/%SYSTEM_CAPABILITIES%/%DISTRIBUTION%/%DISTRIBUTION_VERSION%/update.xml
+URL=https://github.com/tda45/Comper-Browser-Pro-Lite/releases.atom
 #endif

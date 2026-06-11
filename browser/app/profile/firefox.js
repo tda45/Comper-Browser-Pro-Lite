@@ -150,10 +150,14 @@ pref("app.update.notifyDuringDownload", false);
 // when it finishes downloading them.
 pref("app.update.staging.enabled", true);
 
-// Update service URL:
-// app.update.url was removed in Bug 1568994
-// app.update.url.manual is in branding section
-// app.update.url.details is in branding section
+// Comper Browser Otomatik Güncelleme Sunucusu (GitHub Releases Atom Feed)
+pref("app.update.url", "https://github.com/tda45/Comper-Browser-Pro-Lite/releases.atom");
+pref("app.update.url.manual", "https://github.com/tda45/Comper-Browser-Pro-Lite/releases");
+
+// Güncellemeleri tamamen aktif et ve arka planda otomatik kontrolü aç
+pref("app.update.enabled", true);
+pref("app.update.auto", false); // Kullanıcıya "İnsin mi?" diye sorması için false yapıyoruz
+pref("app.update.mode", 1);     // Sadece önemli güncellemeleri sor
 
 // app.update.badgeWaitTime is in branding section
 // app.update.interval is in branding section
@@ -2007,7 +2011,7 @@ pref("browser.newtabpage.activity-stream.discoverystream.thumbsUpDown.searchTops
 pref("browser.newtabpage.activity-stream.discoverystream.publisherFavicon.enabled", false);
 
 // User pref to show stories on newtab (feeds.system.topstories has to be set to true as well)
-pref("browser.newtabpage.activity-stream.feeds.section.topstories", true);
+pref("browser.newtabpage.activity-stream.feeds.section.topstories", false);
 
 // The pref controls if search hand-off is enabled for Activity Stream.
 pref("browser.newtabpage.activity-stream.improvesearch.handoffToAwesomebar", true);
@@ -3402,3 +3406,15 @@ pref("browser.contextual-services.contextId.rust-component.enabled", true);
 
 // Pref to enable the IP protection feature
 pref("browser.ipProtection.enabled", false);
+
+pref("general.useragent.override", "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:130.0) Gecko/20100101 ComperBrowserProLite/2.0");
+
+pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
+
+pref("dom.min_background_timeout_value", 10000)
+
+pref("dom.ipc.processPriorityManager.enabled", true);
+
+pref("dom.ipc.processPriorityManager.backgroundPerceivedPriority.low", true);
+
+pref("browser.tabs.unloadOnLowMemory", true);

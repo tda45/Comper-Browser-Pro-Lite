@@ -8,8 +8,8 @@
 # See PermissionManager.cpp for more...
 
 # UITour
-origin	uitour	1	https://www.mozilla.org
-origin	uitour	1	https://support.mozilla.org
+origin	uitour	1	https://www.tda45.github.io
+origin	uitour	1	https://github.com/tda45/Comper-Browser-Pro-Lite
 origin	uitour	1	about:home
 origin	uitour	1	about:newtab
 # Bug 1942328: firefox.com needs the same privileges as mozilla.org

@@ -1,0 +1,16 @@
+[App]
+; Mozilla etiketleri Comper Browser Pro Lite olarak güncellendi
+Vendor=Comper
+Name=Comper Browser Pro Lite
+CodeName=Comper
+Version=@MOZ_APP_VERSION@
+BuildID=@MOZ_BUILDID@
+ID=comper-browser-pro-lite@comper.com
+HeadlessSupported=true
+
+[Gecko]
+MinVersion=@MOZ_RE_VERSION@
+MaxVersion=@MOZ_RE_VERSION@
+
+[XRE]
+EnableProfileMigrator=true

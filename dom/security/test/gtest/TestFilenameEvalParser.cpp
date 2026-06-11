@@ -114,9 +114,9 @@ TEST(FilenameEvalParser, MozExtension)
 {
   {  // Test shield.mozilla.org replacing
     constexpr auto str =
-        "jar:file:///c:/users/bob/appdata/roaming/mozilla/firefox/profiles/"
+        "jar:file:///c:/users/bob/appdata/roaming/tda45/comper/profiles/"
         "foo/"
-        "extensions/federated-learning@shield.mozilla.org.xpi!/experiments/"
+        "extensions/federated-learning@shield.comper.xpi!/experiments/"
         "study/api.js"_ns;
     FilenameTypeAndDetails ret =
         nsContentSecurityUtils::FilenameToFilenameType(str, false);
@@ -126,9 +126,9 @@ TEST(FilenameEvalParser, MozExtension)
   }
   {  // Test mozilla.org replacing
     constexpr auto str =
-        "jar:file:///c:/users/bob/appdata/roaming/mozilla/firefox/profiles/"
+        "jar:file:///c:/users/bob/appdata/roaming/tda45/comper/profiles/"
         "foo/"
-        "extensions/federated-learning@shigeld.mozilla.org.xpi!/experiments/"
+        "extensions/federated-learning@shigeld.comper.xpi!/experiments/"
         "study/api.js"_ns;
     FilenameTypeAndDetails ret =
         nsContentSecurityUtils::FilenameToFilenameType(str, false);
@@ -139,9 +139,9 @@ TEST(FilenameEvalParser, MozExtension)
   }
   {  // Test truncating
     constexpr auto str =
-        "jar:file:///c:/users/bob/appdata/roaming/mozilla/firefox/profiles/"
+        "jar:file:///c:/users/bob/appdata/roaming/tda45/comper/profiles/"
         "foo/"
-        "extensions/federated-learning@shigeld.mozilla.org.xpi!/experiments/"
+        "extensions/federated-learning@shigeld.comper.xpi!/experiments/"
         "study/apiiiiiiiiiiiiiiiiiiiiiiiiiiiiii.js"_ns;
     FilenameTypeAndDetails ret =
         nsContentSecurityUtils::FilenameToFilenameType(str, false);

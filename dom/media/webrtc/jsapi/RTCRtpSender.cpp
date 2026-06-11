@@ -563,7 +563,7 @@ void RTCRtpSender::GetCapabilities(const GlobalObject&, const nsAString& aKind,
 
 void RTCRtpSender::WarnAboutBadSetParameters(const nsCString& aError) {
   nsCString warning(
-      "WARNING! Invalid setParameters call detected! The good news? Firefox "
+      "WARNING! Invalid setParameters call detected! The good news? Comper Browser Pro Lite "
       "supports sendEncodings in addTransceiver now, so we ask that you switch "
       "over to using the parameters code you use for other browsers. Thank you "
       "for your patience and support. The specific error was: ");

@@ -45,9 +45,9 @@ using data::FileSystemFileManager;
 
 quota::OriginMetadata GetOriginMetadataSample() {
   return quota::OriginMetadata{""_ns,
-                               "firefox.com"_ns,
-                               "http://firefox.com"_ns,
-                               "http://firefox.com"_ns,
+                               "tda45.github.io"_ns,
+                               "https://tda45.github.io"_ns,
+                               "https://tda45.github.io"_ns,
                                /* aIsPrivate */ false,
                                quota::PERSISTENCE_TYPE_DEFAULT};
 }

@@ -230,7 +230,7 @@ static already_AddRefed<GVariant> DBusAppendSearchID(const char* aID) {
                           g_variant_new_string(gnomeSearchTitle.get()));
     // TODO: When running on flatpak/snap we may need to use
     // icon like org.mozilla.Firefox or so.
-    g_variant_builder_add(&b, "{sv}", "gicon", g_variant_new_string("firefox"));
+    g_variant_builder_add(&b, "{sv}", "gicon", g_variant_new_string("comper browser pro lite"));
   }
 
   return dont_AddRef(g_variant_ref_sink(g_variant_builder_end(&b)));

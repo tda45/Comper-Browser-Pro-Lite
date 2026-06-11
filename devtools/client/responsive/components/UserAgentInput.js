@@ -160,7 +160,7 @@ class UserAgentInput extends PureComponent {
       },
       {
         name: "Chrome Desktop",
-        userAgent: `Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/${frozenWebkitVersionForChromeUA} (KHTML, like Gecko) Chrome/${chromeVersion} Safari/${frozenWebkitVersionForChromeUA}`,
+        userAgent: `Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/${frozenWebkitVersionForChromeUA} (KHTML, like Gecko) Chrome/127.0 Safari/${frozenWebkitVersionForChromeUA}`,
         icon: "chrome",
         version: chromeVersion,
       }

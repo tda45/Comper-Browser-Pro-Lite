@@ -881,7 +881,7 @@ TimeIntervals OggDemuxer::GetBuffered(TrackInfo::TrackType aType) {
       "Even if this computation is incorrect due to the reliance on tainted "
       "values, only the search for the time interval or the time interval "
       "returned will be affected. However this will not result in a memory "
-      "safety vulnerabilty in the Firefox renderer.";
+      "safety vulnerabilty in the Comper Browser Pro Lite renderer.";
 
   // Traverse across the buffered byte ranges, determining the time ranges
   // they contain. MediaResource::GetNextCachedData(offset) returns -1 when
@@ -1714,7 +1714,7 @@ TimeUnit OggDemuxer::RangeEndTime(TrackInfo::TrackType aType,
             .unverified_safe_because(
                 "If this is incorrect it may lead to incorrect seeking "
                 "behavior in the stream, however will not affect the memory "
-                "safety of the Firefox renderer.");
+                "safety of the Comper Browser Pro Lite renderer.");
     uint32_t serial = static_cast<uint32_t>(
         sandbox_invoke(*mSandbox, ogg_page_serialno, page)
             .unverified_safe_because(RLBOX_OGG_PAGE_SERIAL_REASON));
@@ -2014,7 +2014,7 @@ nsresult OggDemuxer::SeekBisection(TrackInfo::TrackType aType,
                   .unverified_safe_because(
                       "If this is incorrect it may lead to incorrect seeking "
                       "behavior in the stream, however will not affect the "
-                      "memory safety of the Firefox renderer.");
+                      "memory safety of the Comper Browser Pro Lite renderer.");
 
           if (aType == TrackInfo::kAudioTrack && granulepos > 0 &&
               audioTime == -1) {

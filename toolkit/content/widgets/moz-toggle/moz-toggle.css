@@ -3,28 +3,30 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 :host {
-  --toggle-background-color: var(--button-background-color);
-  --toggle-background-color-hover: var(--button-background-color-hover);
-  --toggle-background-color-active: var(--button-background-color-active);
-  --toggle-background-color-pressed: var(--color-accent-primary);
-  --toggle-background-color-pressed-hover: var(--color-accent-primary-hover);
-  --toggle-background-color-pressed-active: var(--color-accent-primary-active);
-  --toggle-border-color: var(--border-color-interactive);
-  --toggle-border-color-hover: var(--toggle-border-color);
-  --toggle-border-color-active: var(--toggle-border-color);
-  --toggle-border-radius: var(--border-radius-circle);
+  /* --- COMPER GECE KIRMIZISI VE KARE TOGGLE DEĞİŞKENLERİ --- */
+  --toggle-background-color: #1a0505;                 /* Kapalıyken derin gece kırmızısı */
+  --toggle-background-color-hover: #2d0c0c;           /* Kapalı + hover */
+  --toggle-background-color-active: #4a1212;
+  --toggle-background-color-pressed: #ff3b30;         /* Açık pozisyondayken parlak kırmızı */
+  --toggle-background-color-pressed-hover: #ff453a;
+  --toggle-background-color-pressed-active: #d12c22;
+  --toggle-border-color: #ff3b30;                     /* Çerçeve rengi */
+  --toggle-border-color-hover: #ff453a;
+  --toggle-border-color-active: #ff453a;
+  --toggle-border-radius: 0px !important;             /* Kapsül alanını kare yap */
   --toggle-border-width: var(--border-width);
   --toggle-height: var(--size-item-small);
   --toggle-width: var(--size-item-large);
-  --toggle-dot-background-color: var(--toggle-border-color);
-  --toggle-dot-background-color-hover: var(--toggle-dot-background-color);
-  --toggle-dot-background-color-active: var(--toggle-dot-background-color);
-  --toggle-dot-background-color-on-pressed: var(--background-color-canvas);
-  --toggle-dot-margin: 1px;
+  --toggle-dot-background-color: #ff453a;             /* Kapalıyken içindeki kare butonun rengi */
+  --toggle-dot-background-color-hover: #ff5e55;
+  --toggle-dot-background-color-active: #ffffff;
+  --toggle-dot-background-color-on-pressed: #1a0505;  /* Açıkken içindeki butonun rengi (arka plan zıtlığı) */
+  --toggle-dot-margin: 2px;                           /* Kare yapıda daha düzgün oturması için 2px */
   --toggle-dot-height: calc(var(--toggle-height) - 2 * var(--toggle-dot-margin) - 2 * var(--toggle-border-width));
   --toggle-dot-width: var(--toggle-dot-height);
-  --toggle-dot-transform-x: calc(var(--toggle-width) - 4 * var(--toggle-dot-margin) - var(--toggle-dot-width));
+  --toggle-dot-transform-x: calc(var(--toggle-width) - 2 * var(--toggle-dot-margin) - var(--toggle-dot-width) - 2 * var(--toggle-border-width));
   --input-width: var(--toggle-width);
+  /* ------------------------------------------------------------- */
 }
 
 .toggle-button {
@@ -33,23 +35,23 @@
   border: var(--toggle-border-width) solid var(--toggle-border-color);
   height: var(--toggle-height);
   width: var(--toggle-width);
-  border-radius: var(--toggle-border-radius);
+  border-radius: var(--toggle-border-radius) !important;
   background-color: var(--toggle-background-color);
   box-sizing: border-box;
 
   &:focus-visible {
-    outline: var(--focus-outline);
+    outline: 2px solid #ff453a;
     outline-offset: var(--focus-outline-offset);
   }
 
   &:enabled:hover {
     background-color: var(--toggle-background-color-hover);
-    border-color: var(--toggle-border-color);
+    border-color: var(--toggle-border-color-hover);
   }
 
   &:enabled:hover:active {
     background-color: var(--toggle-background-color-active);
-    border-color: var(--toggle-border-color);
+    border-color: var(--toggle-border-color-active);
   }
 
   &::before {
@@ -59,23 +61,23 @@
     height: var(--toggle-dot-height);
     width: var(--toggle-dot-width);
     margin: var(--toggle-dot-margin);
-    border-radius: var(--toggle-border-radius);
+    border-radius: 0px !important;                    /* İçerideki hareket eden butonu da kare yap */
     translate: 0;
   }
 }
 
 .toggle-button[aria-pressed="true"] {
   background-color: var(--toggle-background-color-pressed);
-  border-color: transparent;
+  border-color: var(--toggle-border-color);
 
   &:enabled:hover {
     background-color: var(--toggle-background-color-pressed-hover);
-    border-color: transparent;
+    border-color: var(--toggle-border-color-hover);
   }
 
   &:enabled:hover:active {
     background-color: var(--toggle-background-color-pressed-active);
-    border-color: transparent;
+    border-color: var(--toggle-border-color-active);
   }
 
   &::before {
@@ -100,29 +102,25 @@
   }
 }
 
+/* Diğer media sorguları ve zorunlu renk modları kararlılık için korunmuştur */
 @media (prefers-contrast) {
   .toggle-button:enabled:hover {
     border-color: var(--toggle-border-color-hover);
   }
-
   .toggle-button:enabled:hover:active {
     border-color: var(--toggle-border-color-active);
   }
-
   .toggle-button[aria-pressed="true"]:enabled {
     border-color: var(--toggle-border-color);
     position: relative;
-
     &:hover {
       border-color: var(--toggle-border-color-hover);
-
       &:active {
         background-color: var(--toggle-dot-background-color-active);
         border-color: var(--toggle-dot-background-color-hover);
       }
     }
   }
-
   .toggle-button:enabled:hover::before,
   .toggle-button:enabled:hover:active::before {
     background-color: var(--toggle-dot-background-color-hover);
@@ -130,15 +128,6 @@
 }
 
 @media (forced-colors) {
-  :host {
-    --toggle-dot-background-color: var(--color-accent-primary);
-    --toggle-dot-background-color-hover: var(--color-accent-primary-hover);
-    --toggle-dot-background-color-active: var(--color-accent-primary-active);
-    --toggle-dot-background-color-on-pressed: var(--button-background-color);
-    --toggle-border-color-hover: var(--border-color-interactive-hover);
-    --toggle-border-color-active: var(--border-color-interactive-active);
-  }
-
   .toggle-button[aria-pressed="true"]:enabled::after {
     border: 1px solid var(--button-background-color);
     content: "";
@@ -149,7 +138,6 @@
     border-radius: var(--toggle-border-radius);
     inset: -2px;
   }
-
   .toggle-button[aria-pressed="true"]:enabled:hover:active::after {
     border-color: var(--toggle-border-color-active);
   }

@@ -13,7 +13,7 @@ const DUMMY_ICON = `url("${MenuItem.DUMMY_ICON}")`;
 
 const FIREFOX_DEVICE = {
   name: "Device of Firefox user-agent",
-  userAgent: "Mozilla/5.0 (Mobile; rv:39.0) Gecko/39.0 Firefox/39.0",
+  userAgent: "Mozilla/5.0 (Mobile; rv:39.0) Gecko/39.0 Firefox/39.0 Chrome/127.0",
   width: 320,
   height: 570,
   pixelRatio: 5.5,

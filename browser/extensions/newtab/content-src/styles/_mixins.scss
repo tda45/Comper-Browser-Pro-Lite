@@ -28,23 +28,24 @@
   @content;
 
   @include dark-theme-only {
-    border-top: 1px solid $grey-60;
+    border-top: 1px solid rgba(255, 28, 28, 0.4); // Koyu temada üst çizgiye hafif şeffaf kırmızı dokunuş
   }
 
-  border-top: 1px solid $grey-30;
+  border-top: 1px solid rgba(255, 28, 28, 0.2); // Açık temada üst çizgiye hafif şeffaf kırmızı dokunuş
 }
 
 @mixin ds-border-bottom {
   @content;
 
   @include dark-theme-only {
-    border-bottom: 1px solid $grey-60;
+    border-bottom: 1px solid rgba(255, 28, 28, 0.4); // Koyu temada alt çizgiye hafif şeffaf kırmızı dokunuş
   }
 
-  border-bottom: 1px solid $grey-30;
+  border-bottom: 1px solid rgba(255, 28, 28, 0.2); // Açık temada alt çizgiye hafif şeffaf kırmızı dokunuş
 }
 
-@mixin ds-fade-in($halo-color: $blue-50-30) {
+// Burası kritik! Butonlara veya kartlara odaklanıldığında (focus/hover) etrafında oluşacak parlamayı Comper kırmızısı yapıyoruz.
+@mixin ds-fade-in($halo-color: rgba(255, 28, 28, 0.3)) {
   box-shadow: 0 0 0 5px $halo-color;
   transition: box-shadow 150ms;
   border-radius: var(--border-radius-small);

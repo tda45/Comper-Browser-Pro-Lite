@@ -160,7 +160,7 @@ static ClientInfo* CreateClientInfo() {
   nsresult rv = prefBranch->GetCharPref("browser.safebrowsing.id", clientId);
 
   if (NS_FAILED(rv)) {
-    clientId = "Firefox";  // Use "Firefox" as fallback.
+    clientId = "Comper Browser Pro Lite";  // Use "Comper Browser Pro Lite" as fallback.
   }
 
   c->set_client_id(clientId.get());

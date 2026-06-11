@@ -120,7 +120,7 @@ PRLibrary* LoadApitraceLibrary() {
   nsAutoCString logFile;
   Preferences::GetCString("gfx.apitrace.logfile", logFile);
   if (logFile.IsEmpty()) {
-    logFile = "firefox.trace";
+    logFile = "comper.trace";
   }
 
   // The firefox process can't write to /data/local, but it can write

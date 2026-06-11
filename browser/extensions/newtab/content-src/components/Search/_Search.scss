@@ -9,16 +9,11 @@ $glyph-forward: url('chrome://browser/skin/forward.svg');
 .search-wrapper {
   padding: 0 0 var(--space-xxlarge);
 
-
-  // Edge case for users who have pocket stories turned off
   .no-recommended-stories & {
-    // Bug 1967304 - Large number (40px)
     padding-block-end: calc(var(--space-large) + var(--space-xlarge));
   }
 
-  // Edge case for users who have only search enabled
   .only-search & {
-    // Bug 1967304 - Large number (40px)
     padding-block-end: calc(var(--space-large) + var(--space-xlarge));
   }
 
@@ -39,17 +34,14 @@ $glyph-forward: url('chrome://browser/skin/forward.svg');
     }
 
     @media (min-width: $break-point-widest) {
-      width: 720px;
+      width: 720px; // Geniş ekranlarda arama çubuğunun asil duruşu
     }
 
-    // Bug 1966715: Offset padding of the submit button so the reset button is visible
     &.no-handoff {
       input {
-        // Bug 1967304 - calc ($var)
-        padding-inline-end: calc($search-button-width + var(--space-medium)); // stylelint-disable-line declaration-property-value-disallowed-list
+        padding-inline-end: calc($search-button-width + var(--space-medium));
       }
     }
-
   }
 
   .search-inner-wrapper:has(.trending-searches-pill-wrapper) {
@@ -68,19 +60,19 @@ $glyph-forward: url('chrome://browser/skin/forward.svg');
     }
   }
 
+  // Arama Girdisi ve Butonunun Ana Gövdesi (Dikdörtgen ve Yarı Saydam Yapı)
   .search-handoff-button,
   input {
-    background: var(--newtab-background-color-secondary) var(--newtab-search-icon) $search-icon-padding center no-repeat;
+    background: rgba(20, 20, 20, 0.4) var(--newtab-search-icon) $search-icon-padding center no-repeat; // Arka plan resminin üstünde şık durması için yarı saydam koyu dolgu
     background-size: $search-icon-size;
-    // Bug 1967304 - $variable
-    padding-inline-start: $search-icon-width; // stylelint-disable-line declaration-property-value-disallowed-list
+    padding-inline-start: $search-icon-width;
     padding-inline-end: var(--space-small);
     padding-block: 0;
     width: 100%;
-    box-shadow: $shadow-card;
-    border: 1px solid transparent;
-    border-radius: var(--border-radius-medium);
-    color: var(--newtab-text-primary-color);
+    box-shadow: none !important; // Yuvarlak gölgeleri tamamen sıfırlıyoruz
+    border: 1px solid rgba(255, 28, 28, 0.4); // İnce kırmızımsı Comper kenarlığı
+    border-radius: 0px !important; // JİLET GİBİ DİKDÖRTGEN!
+    color: #ffffff;
     -moz-context-properties: fill;
     fill: var(--newtab-text-secondary-color);
 
@@ -89,18 +81,21 @@ $glyph-forward: url('chrome://browser/skin/forward.svg');
     }
   }
 
+  // Arama Çubuğuna Tıklandığında (Focus Durumu)
   .search-inner-wrapper:active input,
   input:focus {
-    border: 1px solid var(--newtab-primary-action-background);
+    border: 1px solid #ff1c1c !important; // Net Comper Kırmızısı kenarlık
     outline: 0;
-    box-shadow: $shadow-focus;
+    box-shadow: 0 0 8px rgba(255, 28, 28, 0.6) !important; // Dikdörtgen formda kırmızı neon parlama efekti
+    background-color: rgba(10, 10, 10, 0.6);
   }
 
+  // Arama Çubuğunun Sağındaki Git/Ok Butonu
   .search-button {
     background: $glyph-forward no-repeat center center;
     background-size: 16px 16px;
     border: 0;
-    border-radius: 0 var(--border-radius-medium) var(--border-radius-medium) 0;
+    border-radius: 0px !important; // Tamamen dikdörtgen
     -moz-context-properties: fill;
     fill: var(--newtab-text-secondary-color);
     height: 100%;
@@ -110,19 +105,18 @@ $glyph-forward: url('chrome://browser/skin/forward.svg');
 
     &:focus,
     &:hover {
-      background-color: var(--newtab-element-hover-color);
+      background-color: rgba(255, 28, 28, 0.2); // Üzerine gelindiğinde kırmızımsı hover efekti
       cursor: pointer;
     }
 
     &:focus {
       outline: 0;
-      box-shadow: $shadow-focus;
-      border: 1px solid var(--newtab-primary-action-background);
-      border-radius: 0 var(--border-radius-medium) var(--border-radius-medium) 0;
+      box-shadow: none !important;
+      border-left: 1px solid #ff1c1c;
     }
 
     &:active {
-      background-color: var(--newtab-element-hover-color);
+      background-color: rgba(255, 28, 28, 0.4);
     }
 
     &:dir(rtl) {
@@ -132,21 +126,20 @@ $glyph-forward: url('chrome://browser/skin/forward.svg');
 
   &.fake-focus:not(.search.disabled) {
     .search-handoff-button {
-      border: 1px solid var(--newtab-primary-action-background);
-      box-shadow: $shadow-focus;
+      border: 1px solid #ff1c1c !important;
+      box-shadow: 0 0 8px rgba(255, 28, 28, 0.6) !important;
     }
   }
 
   .search-handoff-button {
     padding-inline-end: var(--space-large);
-    color: var(--newtab-text-primary-color);
+    color: #ffffff;
     fill: var(--newtab-text-secondary-color);
     -moz-context-properties: fill;
 
     .fake-caret {
       inset-block-start: var(--space-large);
-      // Bug 1967304 - $variable
-      inset-inline-start: $search-icon-width; // stylelint-disable-line declaration-property-value-disallowed-list
+      inset-inline-start: $search-icon-width;
 
       &:dir(rtl) {
         background-position-x: right $search-icon-padding;
@@ -157,7 +150,7 @@ $glyph-forward: url('chrome://browser/skin/forward.svg');
   &.visible-logo {
     .logo-and-wordmark {
       .wordmark {
-        fill: var(--newtab-wordmark-color);
+        fill: #ff1c1c;
       }
     }
   }
@@ -194,8 +187,6 @@ $glyph-forward: url('chrome://browser/skin/forward.svg');
       margin-block-start: 0;
 
       @media (min-width: $break-point-large) {
-        // This is to handle the gap left by search being removed.
-        // Bug 1967304 - Large number (96px)
         margin-block-start: calc(var(--space-xlarge) * 4);
       }
 
@@ -205,11 +196,8 @@ $glyph-forward: url('chrome://browser/skin/forward.svg');
     }
   }
 
-  // Bug 1961633 - Keep shortcuts/feed below the logo/weather widget (var b layout)
   &.no-search.has-sections-grid {
     .body-wrapper {
-      // 96px is the margin necessary to maintain the same spacing with/without the search bar
-      // Bug 1967304 - Large number (96px)
       margin-block-start: calc(var(--space-xlarge) * 4);
     }
 
@@ -228,7 +216,6 @@ $glyph-forward: url('chrome://browser/skin/forward.svg');
         inset-inline-start: var(--space-xxlarge);
       }
     }
-
   }
 
   .search-inner-wrapper {
@@ -243,30 +230,11 @@ $glyph-forward: url('chrome://browser/skin/forward.svg');
     }
 
     @media (min-width: $break-point-large) {
-      width: 410px;
+      width: 510px;
     }
 
     @media (min-width: $break-point-widest) {
-      width: 584px;
-    }
-
-    @media (min-width: $break-point-weather) {
       width: 720px;
-    }
-  }
-
-  // Bug 1960519 - Custom override for mobile icon next to weather
-  &.has-mobile-download-promo {
-    .search-inner-wrapper {
-      @media (min-width: $break-point-widest) {
-        // Set to smaller breakpoint to fit weather
-        width: 497px;
-      }
-
-      @media (min-width: $break-point-weather) {
-        // Reset back to default length
-        width: 720px;
-      }
     }
   }
 
@@ -292,16 +260,16 @@ $glyph-forward: url('chrome://browser/skin/forward.svg');
   }
 }
 
+// Arama Handoff Buton Alanı Keskinleştirme
 .search-handoff-button {
-  background: var(--newtab-background-color-secondary) var(--newtab-search-icon) $search-icon-padding center no-repeat;
+  background: rgba(20, 20, 20, 0.4) var(--newtab-search-icon) $search-icon-padding center no-repeat;
   background-size: $search-icon-size;
-  border: solid 1px transparent;
-  border-radius: var(--border-radius-small);
-  box-shadow: $shadow-secondary, 0 0 0 1px $black-15;
+  border: 1px solid rgba(255, 28, 28, 0.3);
+  border-radius: 0px !important; // Köşeler sıfırlandı
+  box-shadow: none !important;
   cursor: text;
   font-size: inherit;
   padding: 0;
-  // Bug 1967304 - Large number (48px)
   padding-inline: calc(var(--space-xlarge) * 2);
   opacity: 1;
   width: 100%;
@@ -311,8 +279,8 @@ $glyph-forward: url('chrome://browser/skin/forward.svg');
   }
 
   .fake-focus:not(.search-disabled) & {
-    border: $input-border-active;
-    box-shadow: var(--newtab-textbox-focus-boxshadow);
+    border: 1px solid #ff1c1c !important;
+    box-shadow: 0 0 8px rgba(255, 28, 28, 0.6) !important;
 
     .fake-caret {
       display: block;
@@ -338,25 +306,18 @@ $glyph-forward: url('chrome://browser/skin/forward.svg');
   }
 
   .fake-textbox {
-    opacity: 0.54;
+    opacity: 0.8;
+    color: #ffffff;
     text-align: start;
     -webkit-line-clamp: 1;
     overflow: hidden;
   }
 
   .fake-caret {
-    /* To replicate the default caret blink rate of 567ms (https://searchfox.org/mozilla-central/source/widget/cocoa/nsLookAndFeel.mm#397):
-     - Multiply the blink time by 2 to cover both the visible and hidden states.
-     - Use steps(2, start) to divide the animation into 2 phases:
-       1. First 567ms (Step 1) → Caret is visible
-       2. Next 567ms (Step 2) → Caret is hidden
-    This gives a sharp ON/OFF effect instead of a smooth transition. */
-
     animation: caret-animation var(--caret-blink-time, 1134ms) steps(2, start) var(--caret-blink-count, infinite);
-    background: var(--newtab-text-primary-color);
+    background: #ff1c1c; // İmleç rengi de Comper Kırmızısı oldu
     display: none;
-    // Bug 1967304 - Large number (48px)
-    inset-inline-start:calc(var(--space-xlarge) * 2);
+    inset-inline-start: calc(var(--space-xlarge) * 2);
     height: 17px;
     position: absolute;
     inset-block-start: var(--space-large);
@@ -370,6 +331,7 @@ $glyph-forward: url('chrome://browser/skin/forward.svg');
   }
 }
 
+// Sayfa aşağı kaydırıldığında üstte sabitlenen arama çubuğu düzeni
 @media (height > 700px) {
   body:not(.inline-onboarding) .fixed-search {
     .search-wrapper {
@@ -378,9 +340,9 @@ $glyph-forward: url('chrome://browser/skin/forward.svg');
       $search-icon-padding: 16px;
       $search-header-bar-height: 95px;
 
-      border-bottom: solid 1px var(--newtab-border-color);
+      border-bottom: solid 1px rgba(255, 28, 28, 0.3);
       padding: var(--space-xlarge) 0;
-      background-color: var(--newtab-overlay-color);
+      background-color: rgba(15, 15, 15, 0.85); // Üst bar sabitlendiğinde yarı saydam koyu arka plan
       min-height: $search-header-bar-height;
       inset-inline-start: 0;
       position: fixed;
@@ -395,6 +357,7 @@ $glyph-forward: url('chrome://browser/skin/forward.svg');
       input {
         background-position-x: $search-icon-padding;
         background-size: $search-icon-size;
+        border-radius: 0px !important;
 
         &:dir(rtl) {
           background-position-x: right $search-icon-padding;
@@ -413,6 +376,7 @@ $glyph-forward: url('chrome://browser/skin/forward.svg');
     .search-handoff-button {
       background-position-x: var(--space-large);
       background-size: $search-icon-size;
+      border-radius: 0px !important;
 
       &:dir(rtl) {
         background-position-x: right var(--space-large);
@@ -425,76 +389,74 @@ $glyph-forward: url('chrome://browser/skin/forward.svg');
   }
 }
 
+// Öneri Listesi ve Arama Sonuçları Açılır Menüsü Ayarları
 @at-root {
-
-  // Adjust the style of the contentSearchUI-generated table
   .contentSearchSuggestionTable {
-    border: 0;
-    box-shadow: $context-menu-shadow;
-    transform: translateY($textbox-shadow-size);
-    background-color: var(--newtab-background-color);
+    border: 1px solid rgba(255, 28, 28, 0.4) !important;
+    border-radius: 0px !important; // Öneri kutusu da keskin dikdörtgen
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5) !important;
+    background-color: rgba(20, 20, 20, 0.95) !important;
+    backdrop-filter: blur(10px);
 
     .contentSearchHeader {
-      color: var(--newtab-text-secondary-color);
-      background-color: var(--newtab-background-color-secondary);
+      color: #ffffff;
+      background-color: rgba(255, 28, 28, 0.2);
     }
 
     .contentSearchHeader,
     .contentSearchSettingsButton {
-      border-color: var(--newtab-border-color);
+      border-color: rgba(255, 28, 28, 0.3);
     }
 
     .contentSearchSuggestionsList {
-      color: var(--newtab-text-primary-color);
+      color: #ffffff;
       border: 0;
     }
 
     .contentSearchOneOffsTable {
-      border-top: solid 1px var(--newtab-border-color);
-      background-color: var(--newtab-background-color);
+      border-top: solid 1px rgba(255, 28, 28, 0.3);
+      background-color: rgba(15, 15, 15, 0.95);
     }
 
     .contentSearchSearchWithHeaderSearchText {
-      color: var(--newtab-text-primary-color);
+      color: #ffffff;
     }
 
     .contentSearchSuggestionRow {
       &.selected {
-        background: var(--newtab-element-hover-color);
-        color: var(--newtab-text-primary-color);
+        background: rgba(255, 28, 28, 0.25) !important; // Seçilen satır hafif Comper Kırmızısı dolgu
+        color: #ffffff;
 
         &:active {
-          background: var(--newtab-element-active-color);
+          background: rgba(255, 28, 28, 0.4);
         }
 
         .historyIcon {
-          fill: var(--newtab-text-secondary-color);
+          fill: #ff1c1c;
         }
       }
     }
 
     .contentSearchOneOffItem {
-      // Make the border slightly shorter by offsetting from the top and bottom
       $border-offset: 18%;
-
       background-image: none;
-      border-image: linear-gradient(transparent $border-offset, var(--newtab-border-color) $border-offset, var(--newtab-border-color) 100% - $border-offset, transparent 100% - $border-offset) 1;
+      border-image: linear-gradient(transparent $border-offset, rgba(255, 28, 28, 0.3) $border-offset, rgba(255, 28, 28, 0.3) 100% - $border-offset, transparent 100% - $border-offset) 1;
       border-inline-end: 1px solid;
       position: relative;
 
       &.selected {
-        background: var(--newtab-element-hover-color);
+        background: rgba(255, 28, 28, 0.3);
       }
 
       &:active {
-        background: var(--newtab-element-active-color);
+        background: rgba(255, 28, 28, 0.5);
       }
     }
 
     .contentSearchSettingsButton {
       &:hover {
-        background: var(--newtab-element-hover-color);
-        color: var(--newtab-text-primary-color);
+        background: rgba(255, 28, 28, 0.3);
+        color: #ffffff;
       }
     }
   }

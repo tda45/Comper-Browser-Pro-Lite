@@ -1,6 +1,4 @@
-<?xml version="1.0"?> <!-- -*- Mode: HTML -*- -->
-
-# This Source Code Form is subject to the terms of the Mozilla Public
+<?xml version="1.0"?> # This Source Code Form is subject to the terms of the Mozilla Public
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
@@ -11,10 +9,10 @@
         id="aboutDialog"
         windowtype="Browser:About"
 #ifndef XP_MACOSX
-        data-l10n-id="aboutDialog-title"
+        title="About Comper Browser Pro Lite Edition"
 #endif
         role="dialog"
-        aria-describedby="version distribution distributionId communityDesc contributeDesc trademark"
+        aria-describedby="version distribution distributionId communityDesc trademark"
         >
 #ifdef XP_MACOSX
 #include macWindow.inc.xhtml
@@ -41,15 +39,12 @@
     <hbox id="clientBox">
       <vbox id="leftBox" flex="1"/>
       <vbox id="rightBox">
-        <label id="release" hidden="true">
-        <!-- This string is explicitly not translated -->
-          Extended Support Release
+        <label id="release" style="font-weight: bold; color: #ff9f1c;">
+          Comper Browser Pro Lite Edition
         </label>
 #ifndef MOZ_UPDATER
-        <!-- This HBOX is duplicated below with class="update" -->
         <hbox align="baseline">
           <label id="version"/>
-          <label id="releasenotes" is="text-link" hidden="true" data-l10n-id="releaseNotes-link"/>
         </hbox>
 #endif
 
@@ -64,84 +59,54 @@
               <deck id="updateDeck" orient="vertical">
                 <description id="checkForUpdates">
                   <button id="checkForUpdatesButton"
-                          data-l10n-id="update-checkForUpdatesButton"/>
+                          label="Check for Updates"/>
                 </description>
                 <description id="downloadAndInstall">
                   <button id="downloadAndInstallButton"/>
                 </description>
                 <description id="apply">
                   <button id="updateButton"
-                          data-l10n-id="update-updateButton"/>
+                          label="Apply Update and Restart"/>
                 </description>
-                <description id="checkingForUpdates" data-l10n-id="update-checkingForUpdates"/>
+                <description id="checkingForUpdates">Checking for updates...</description>
                 <description id="downloading" data-l10n-id="aboutdialog-update-downloading" data-l10n-args='{"transfer":""}'>
                   <label data-l10n-name="download-status"/>
                 </description>
-                <description id="applying" data-l10n-id="update-applying"/>
-                <description id="downloadFailed" data-l10n-id="update-failed">
-                  <label id="failedLink" is="text-link" data-l10n-name="failed-link"/>
+                <description id="applying">Applying update...</description>
+                <description id="downloadFailed">
+                  Update failed. <label id="failedLink" is="text-link" href="https://github.com/tda45/Comper-Browser-Pro-Lite/releases" value="Download manually from GitHub"/>
                 </description>
-                <description id="policyDisabled" data-l10n-id="update-policy-disabled"/>
-                <description id="noUpdatesFound" data-l10n-id="update-noUpdatesFound"/>
-                <description id="checkingFailed" data-l10n-id="aboutdialog-update-checking-failed"/>
-                <description id="otherInstanceHandlingUpdates" data-l10n-id="update-otherInstanceHandlingUpdates"/>
-                <description id="manualUpdate" data-l10n-id="aboutdialog-update-manual-with-link" data-l10n-args='{"displayUrl":""}'>
-                  <label class="manualLink" is="text-link" data-l10n-name="manual-link"/>
+                <description id="policyDisabled">Updates disabled by your administrator.</description>
+                <description id="noUpdatesFound">Comper Browser is up to date.</description>
+                <description id="checkingFailed">Checking for updates failed.</description>
+                <description id="otherInstanceHandlingUpdates">Another instance is handling updates.</description>
+                <description id="manualUpdate">
+                  Please update manually: <label class="manualLink" is="text-link" href="https://github.com/tda45/Comper-Browser-Pro-Lite/releases" value="GitHub Releases"/>
                 </description>
-                <description id="unsupportedSystem" data-l10n-id="update-unsupported">
-                  <label id="unsupportedLink" is="text-link" data-l10n-name="unsupported-link"/>
-                </description>
-                <description id="restarting" data-l10n-id="update-restarting"/>
-                <description id="internalError" data-l10n-id="update-internal-error2" data-l10n-args='{"displayUrl":""}'>
-                  <label class="manualLink" is="text-link" data-l10n-name="manual-link"/>
-                </description>
+                <description id="unsupportedSystem">Your system does not support this version.</description>
+                <description id="restarting">Restarting...</description>
+                <description id="internalError">An internal updater error occurred.</description>
                 <description id="noUpdater"/>
               </deck>
-              <!-- This HBOX is duplicated above without class="update" -->
               <hbox align="baseline">
                 <label id="version" class="update"/>
-                <label id="releasenotes" is="text-link" hidden="true" data-l10n-id="releaseNotes-link"/>
               </hbox>
-              <description class="text-blurb">
-                <label id="aboutDialogHelpLink" is="text-link" data-l10n-id="aboutdialog-help-user"/>
-                <label id="submit-feedback" is="text-link" data-l10n-id="aboutdialog-submit-feedback"/>
-              </description>
             </vbox>
 #endif
           </hbox>
 
-#ifdef MOZ_UPDATER
-          <description class="text-blurb" id="currentChannelText"
-                       data-l10n-id="aboutdialog-channel-description"
-                       data-l10n-attrs="{&quot;channel&quot;: &quot;&quot;}">
-            <label id="currentChannel" data-l10n-name="current-channel"/>
-          </description>
-#endif
-          <vbox id="experimental" hidden="true">
-            <description class="text-blurb" id="warningDesc" data-l10n-id="warningDesc-version"></description>
-            <description class="text-blurb" id="communityExperimentalDesc" data-l10n-id="community-exp">
-              <label is="text-link" href="https://www.mozilla.org/?utm_source=firefox-browser&#38;utm_medium=firefox-desktop&#38;utm_campaign=about-dialog" data-l10n-name="community-exp-mozillaLink"/>
-              <label is="text-link" useoriginprincipal="true" href="about:credits" data-l10n-name="community-exp-creditsLink"/>
-            </description>
-          </vbox>
-          <description class="text-blurb" id="communityDesc" data-l10n-id="community-2">
-            <label is="text-link" href="https://www.mozilla.org/?utm_source=firefox-browser&#38;utm_medium=firefox-desktop&#38;utm_campaign=about-dialog" data-l10n-name="community-mozillaLink"/>
-            <label is="text-link" useoriginprincipal="true" href="about:credits" data-l10n-name="community-creditsLink"/>
-          </description>
-          <description class="text-blurb" id="contributeDesc" data-l10n-id="helpus">
-            <label is="text-link" href="https://foundation.mozilla.org/?form=firefox-about" data-l10n-name="helpus-donateLink"/>
-            <label is="text-link" href="https://www.mozilla.org/contribute/?utm_source=firefox-browser&#38;utm_medium=firefox-desktop&#38;utm_campaign=about-dialog" data-l10n-name="helpus-getInvolvedLink"/>
+          <description class="text-blurb" id="communityDesc">
+            Comper Browser is developed as open-source by the community.
+            <label is="text-link" href="https://github.com/tda45/Comper-Browser-Pro-Lite" value="GitHub Repository"/>
           </description>
         </vbox>
       </vbox>
     </hbox>
     <vbox id="bottomBox">
       <hbox pack="center">
-        <label is="text-link" class="bottom-link" useoriginprincipal="true" href="about:license" data-l10n-id="bottomLinks-license"/>
-        <label is="text-link" class="bottom-link" href="https://www.mozilla.org/about/legal/terms/firefox/" data-l10n-id="bottom-links-terms"/>
-        <label is="text-link" class="bottom-link" href="https://www.mozilla.org/privacy/firefox/?utm_source=firefox-browser&#38;utm_medium=firefox-desktop&#38;utm_campaign=about-dialog" data-l10n-id="bottom-links-privacy"/>
+        <label is="text-link" class="bottom-link" useoriginprincipal="true" href="about:license" value="Licensing Information"/>
       </hbox>
-      <description id="trademark" data-l10n-id="trademarkInfo"></description>
+      <description id="trademark">Comper Browser Pro Lite is a tda45 project.</description>
     </vbox>
   </html:div>
 

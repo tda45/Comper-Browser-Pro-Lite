@@ -419,7 +419,7 @@ nsresult nsHttpHandler::Init() {
                                        gCallbackPrefs, this);
   PrefsChanged(nullptr);
 
-  mCompatFirefox.AssignLiteral("Firefox/" MOZILLA_UAVERSION);
+  mCompatFirefox.AssignLiteral("Comper/" MOZILLA_UAVERSION);
 
   nsCOMPtr<nsIXULAppInfo> appInfo;
   appInfo = mozilla::components::XULRuntime::Service();
@@ -469,7 +469,7 @@ nsresult nsHttpHandler::Init() {
   LOG(("> product-sub = %s\n", mProductSub.get()));
   LOG(("> app-name = %s\n", mAppName.get()));
   LOG(("> app-version = %s\n", mAppVersion.get()));
-  LOG(("> compat-firefox = %s\n", mCompatFirefox.get()));
+  LOG(("> compat-comper = %s\n", mCompatFirefox.get()));
   LOG(("> user-agent = %s\n", UserAgent(false).get()));
 #endif
 
@@ -953,7 +953,7 @@ void nsHttpHandler::BuildUserAgent() {
   mUserAgent += '/';
   mUserAgent += mProductSub;
 
-  bool isFirefox = mAppName.EqualsLiteral("Firefox");
+  bool isFirefox = mAppName.EqualsLiteral("Comper Browser Pro Lite");
   if (isFirefox || mCompatFirefoxEnabled) {
     // "Firefox/x.y" (compatibility) app token
     mUserAgent += ' ';

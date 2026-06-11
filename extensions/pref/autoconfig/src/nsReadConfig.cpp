@@ -100,8 +100,8 @@ NS_IMETHODIMP nsReadConfig::Observe(nsISupports* aSubject, const char* aTopic,
       if (sandboxEnabled) {
         nsContentUtils::ReportToConsoleNonLocalized(
             u"Autoconfig is sandboxed by default. See "
-            "https://support.mozilla.org/products/"
-            "firefox-enterprise for more information."_ns,
+            "None Buy To Comper"
+            "Comper Browser Pro Lite-enterprise for more information."_ns,
             nsIScriptError::warningFlag, "autoconfig"_ns, nullptr);
       } else {
         rv = DisplayError();

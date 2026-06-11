@@ -3,37 +3,27 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 # NSIS branding defines for official release builds.
-# The nightly build branding.nsi is located in browser/installer/windows/nsis/
-# The unofficial build branding.nsi is located in browser/branding/unofficial/
 
-# BrandFullNameInternal is used for some registry and file system values
-# instead of BrandFullName and typically should not be modified.
-!define BrandFullNameInternal "Mozilla Firefox"
-!define BrandFullName         "Mozilla Firefox"
-!define CompanyName           "Mozilla Corporation"
-!define URLInfoAbout          "https://www.mozilla.org"
-!define URLUpdateInfo         "https://www.mozilla.org/firefox/${AppVersion}/releasenotes"
-!define HelpLink              "https://support.mozilla.org"
+!define BrandFullNameInternal "Comper Browser Pro Lite"
+!define BrandFullName         "Comper Browser Pro Lite"
+!define CompanyName           "tda_45"
+!define URLInfoAbout          "about:preferences"
+!define URLUpdateInfo         "about:preferences"
+!define HelpLink              "about:preferences"
 
-; The OFFICIAL define is a workaround to support different urls for Release and
-; Beta since they share the same branding when building with other branches that
-; set the update channel to beta.
 !define OFFICIAL
-!define URLStubDownloadX86 "https://download.mozilla.org/?os=win&lang=${AB_CD}&product=firefox-latest"
-!define URLStubDownloadAMD64 "https://download.mozilla.org/?os=win64&lang=${AB_CD}&product=firefox-latest"
-!define URLStubDownloadAArch64 "https://download.mozilla.org/?os=win64-aarch64&lang=${AB_CD}&product=firefox-latest"
-!define URLManualDownload "https://www.mozilla.org/${AB_CD}/firefox/installer-help/?channel=release&installer_lang=${AB_CD}"
-!define URLSystemRequirements "https://www.mozilla.org/firefox/system-requirements/"
+!define URLStubDownloadX86 "about:blank"
+!define URLStubDownloadAMD64 "about:blank"
+!define URLStubDownloadAArch64 "about:blank"
+!define URLManualDownload "about:blank"
+!define URLSystemRequirements "about:blank"
 !define Channel "release"
 
 # The installer's certificate name and issuer expected by the stub installer
-!define CertNameDownload   "Mozilla Corporation"
-!define CertIssuerDownload "DigiCert Trusted G4 Code Signing RSA4096 SHA384 2021 CA1"
+!define CertNameDownload   "tda_45"
+!define CertIssuerDownload "tda_45 Internal Code Signing"
 
-# Dialog units are used so the UI displays correctly with the system's DPI
-# settings. These are tweaked to look good with the en-US strings; ideally
-# we would customize them for each locale but we don't really have a way to
-# implement that and it would be a ton of work for the localizers.
+# Dialog units are used so the UI displays correctly with the system's DPI Settings.
 !define PROFILE_CLEANUP_LABEL_TOP "50u"
 !define PROFILE_CLEANUP_LABEL_LEFT "22u"
 !define PROFILE_CLEANUP_LABEL_WIDTH "175u"
@@ -68,9 +58,8 @@
 !define INSTALL_INSTALLING_FONT_SIZE 15
 !define INSTALL_INSTALLING_FONT_WEIGHT 600
 
-# UI Colors that can be customized for each channel
-!define COMMON_TEXT_COLOR 0x000000
-!define COMMON_BACKGROUND_COLOR 0xFFFFFF
-!define INSTALL_INSTALLING_TEXT_COLOR 0xFFFFFF
-# This color is written as 0x00BBGGRR because it's actually a COLORREF value.
-!define PROGRESS_BAR_BACKGROUND_COLOR 0xFFAA00
+# UI Colors - Gece Kırmızısı Teması (tda_45 Özel)
+!define COMMON_TEXT_COLOR 0xE0E0E0
+!define COMMON_BACKGROUND_COLOR 0x121212
+!define INSTALL_INSTALLING_TEXT_COLOR 0xFF0000
+!define PROGRESS_BAR_BACKGROUND_COLOR 0x0000FF
